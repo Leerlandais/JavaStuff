@@ -1,0 +1,18 @@
+body{
+    background-color: #f4d292;
+    font-family: cursive;
+}
+
+h1{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 48px;
+}
+
+button{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    margin-left: 47%;
+
+}
