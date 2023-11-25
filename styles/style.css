@@ -1,3 +1,21 @@
+footer {
+    position: sticky;
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+    bottom: 0;
+}
+
+#copyright{                 
+    transition: transform 50s ease-in-out;
+}
+
+#copyright:hover {
+    transform: rotateY(-36000deg);
+   
+}
+
+
 body{
     background-color: #f4d292;
     font-family: cursive;
