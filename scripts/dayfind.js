@@ -42,10 +42,7 @@ function cutString(){
             LYfix--;
             console.log("2", LYfix);
         }
-        else if (parseInt(YY) % 4 === 0){
-            LYfix--;
-            console.log("3", LYfix);
-        }
+
         console.log(LYfix);
         
         

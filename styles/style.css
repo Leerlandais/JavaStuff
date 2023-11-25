@@ -15,16 +15,30 @@ footer {
    
 }
 
-
 body{
     background-color: #f4d292;
     font-family: cursive;
+    font-size: 24px;
 }
 
 h1{
     text-align: center;
     text-decoration: underline;
     font-size: 48px;
+}
+
+h2{
+    text-decoration: underline;
+    font-size: 24px;
+}
+
+div{
+    padding: 50px;
+
+}
+
+ul{
+    padding-left: 100px;
 }
 
 button{
@@ -37,4 +51,46 @@ button{
 
 #home{
     display: block;
+}
+
+#mathTab{
+    padding-left: 1060px;
+}
+
+#homediv{
+    padding-left: 850px;
+}
+
+#simonTab{
+    padding-left: 400px;
+}
+
+#simonTab tr{
+    height: 200px;
+    width: 500px;
+    border: 2px solid;
+}
+
+#simonTab td{
+    height: 200px;
+    width: 500px;
+    border: 2px solid;
+}
+
+.hidden{
+    border: none !important;
+    color: red;
+}
+
+#butRed{
+    background-color: red;
+}
+#butGre{
+    background-color: green;
+}
+#butYel{
+    background-color: yellow;
+}
+#butBlu{
+    background-color: blue;
 }
