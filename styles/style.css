@@ -94,3 +94,8 @@ button{
 #butBlu{
     background-color: blue;
 }
+
+#butStart{
+    background-color: darkgoldenrod;
+    text-align: center;
+}
