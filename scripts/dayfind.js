@@ -33,7 +33,7 @@ function cutString(){
     var YY = DoB.substring(6);
         console.log (YY);
 
-        if (parseInt(YYy) % 100 === 0 && parseInt(YYy) % 400 === 0){
+        if (parseInt(YYy) % 100 === 0 && parseInt(YYy) % 400 !== 0){
             LYfix++;
             console.log("1",LYfix);
         }

@@ -4,11 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
     var yourList = [];
     document.getElementById("butStart").onclick = startSimon;
     function startSimon(){
+        setTimeout(function() {
         document.getElementById("butStart").style.opacity = "0";
         var goes = 5; // add user defined level soon
-        
+      
         while (goCount < 5){
-
+        
             var pingPick = Math.floor(Math.random() * 4) + 1;
             if (pingPick === 1){
                 document.getElementById("butRed").style.opacity = "0.1";
@@ -43,10 +44,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 pingBlu();
                 goCount++;
             }
-            
+           
         }
-
-
+        
         console.log(myList);
         
         function pingRed(){
@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         
+    });
     }
     
     function yourGo(){
