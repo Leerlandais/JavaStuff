@@ -104,18 +104,18 @@ button{
     opacity: 0.4;
 }
 
-#chess{
+#chessboard{
     border: 2px solid;
     text-align: center;
     margin-left: 800px;
     border-collapse: collapse;
 }
 
-#chess tr:nth-child(even) td:nth-child(even), #chess tr:nth-child(odd) td:nth-child(odd) {
+#chessboard tr:nth-child(even) td:nth-child(even), #chessboard tr:nth-child(odd) td:nth-child(odd) {
     background: #a68a64;
 }
 
-#chess tr:nth-child(odd) td:nth-child(even), #chess tr:nth-child(even) td:nth-child(odd) {
+#chessboard tr:nth-child(odd) td:nth-child(even), #chessboard tr:nth-child(even) td:nth-child(odd) {
     background: #582f0e;
 }
 
