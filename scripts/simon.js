@@ -3,73 +3,87 @@ document.addEventListener("DOMContentLoaded", function() {
     var myList = [];
     var yourList = [];
     document.getElementById("butStart").onclick = startSimon;
-
     function startSimon(){
         document.getElementById("butStart").style.opacity = "0";
         var goes = 5; // add user defined level soon
-
-
+        
         while (goCount < 5){
-            document.getElementById("butRed").style.opacity = "0.4";
-            document.getElementById("butGre").style.opacity = "0.4";
-            document.getElementById("butYel").style.opacity = "0.4";
-            document.getElementById("butBlu").style.opacity = "0.4";
+
             var pingPick = Math.floor(Math.random() * 4) + 1;
             if (pingPick === 1){
+                document.getElementById("butRed").style.opacity = "0.1";
+                document.getElementById("butGre").style.opacity = "0.1";
+                document.getElementById("butYel").style.opacity = "0.1";
+                document.getElementById("butBlu").style.opacity = "0.1";
                 pingRed();
-                goCount++;
-                myList.push(pingPick);
-                console.log(pingPick);
+                goCount++;   
             }
             else if (pingPick === 2){
+                document.getElementById("butRed").style.opacity = "0.1";
+                document.getElementById("butGre").style.opacity = "0.1";
+                document.getElementById("butYel").style.opacity = "0.1";
+                document.getElementById("butBlu").style.opacity = "0.1";
                 pingGre();
                 goCount++;
-                myList.push(pingPick);
-                console.log(pingPick);
+                
             }
             else if (pingPick === 3){
+                document.getElementById("butRed").style.opacity = "0.1";
+                document.getElementById("butGre").style.opacity = "0.1";
+                document.getElementById("butYel").style.opacity = "0.1";
+                document.getElementById("butBlu").style.opacity = "0.1";
                 pingYel();
-                goCount++;
-                myList.push(pingPick);
-                console.log(pingPick);
+                goCount++;    
             }
             else{
+                document.getElementById("butRed").style.opacity = "0.1";
+                document.getElementById("butGre").style.opacity = "0.1";
+                document.getElementById("butYel").style.opacity = "0.1";
+                document.getElementById("butBlu").style.opacity = "0.1";
                 pingBlu();
                 goCount++;
-                myList.push(pingPick);
-                console.log(pingPick);
             }
             
         }
-            console.log(myList);
-            if (confirm("Your turn, ready?") === true){
-                goCount = 0;
-                yourGo();
-            }
-            else{
-                console.log("Player quit");
-                return;
-            }
-            
-        }
+
+
+        console.log(myList);
+        
         function pingRed(){
             document.getElementById("butRed").style.opacity = "1";
+            myList.push(pingPick);
+            console.log(pingPick);
         }
         function pingGre(){
             document.getElementById("butGre").style.opacity = "1";
+            myList.push(pingPick);
+            console.log(pingPick);
         }
         function pingYel(){
             document.getElementById("butYel").style.opacity = "1";
+            myList.push(pingPick);
+            console.log(pingPick);
         }
         function pingBlu(){
             document.getElementById("butBlu").style.opacity = "1";
+            myList.push(pingPick);
+            console.log(pingPick);
         }
+        
+        
+        if (confirm("Your turn, ready?") === true){
+            goCount = 0;
+            yourGo();
+        }
+        else{
+            console.log("Player quit");
+            return;
+        }
+        
+    }
+    
+    function yourGo(){
 
-        function yourGo(){
-            document.getElementById("butRed").style.opacity = "0.8";
-            document.getElementById("butGre").style.opacity = "0.8";
-            document.getElementById("butYel").style.opacity = "0.8";
-            document.getElementById("butBlu").style.opacity = "0.8";
             yourList = [];
 
             var yourCount = 0;
@@ -178,6 +192,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
         Failed, it was red, blue, green etc
         */
-    
-
 });
