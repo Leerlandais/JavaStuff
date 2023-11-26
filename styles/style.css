@@ -103,3 +103,43 @@ button{
 .dimmed{
     opacity: 0.4;
 }
+
+#chess{
+    border: 2px solid;
+    text-align: center;
+    margin-left: 800px;
+    border-collapse: collapse;
+}
+
+#chess tr:nth-child(even) td:nth-child(even), #chess tr:nth-child(odd) td:nth-child(odd) {
+    background: #a68a64;
+}
+
+#chess tr:nth-child(odd) td:nth-child(even), #chess tr:nth-child(even) td:nth-child(odd) {
+    background: #582f0e;
+}
+
+.square{
+    height: 100px;
+    width: 100px;
+}
+
+.right{
+    background-color: #83623e !important;
+    border: 2px solid;
+    height: 100px;
+    width: 40px;
+}
+
+.bottom{
+    background-color: #83623e !important;
+    border: 2px solid;
+    height: 40px;
+    width: 100px;
+}
+
+.corner{
+    background-color: #83623e !important;
+    height: 40px;
+    width: 40px;
+}

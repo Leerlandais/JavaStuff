@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
-
+    var goCount = 0;
+    var myList = [];
+    var yourList = [];
     document.getElementById("butStart").onclick = startSimon;
 
     function startSimon(){
         document.getElementById("butStart").style.opacity = "0";
         var goes = 5; // add user defined level soon
 
-        var goCount = 0;
-        var myList = [];
-        var yourList = [];
+
         while (goCount < 5){
             document.getElementById("butRed").style.opacity = "0.4";
             document.getElementById("butGre").style.opacity = "0.4";
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
             
-
+        }
         function pingRed(){
             document.getElementById("butRed").style.opacity = "1";
         }
@@ -70,42 +70,101 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("butGre").style.opacity = "0.8";
             document.getElementById("butYel").style.opacity = "0.8";
             document.getElementById("butBlu").style.opacity = "0.8";
-            for (goCount = 0; goCount < 5; goCount++) {
-            document.getElementById("butRed").onclick = playRed;
-            document.getElementById("butGre").onclick = playGre;
-            document.getElementById("butYel").onclick = playYel;
-            document.getElementById("butBlu").onclick = playBlu;
-            
+            yourList = [];
+
+            var yourCount = 0;
+            if (yourCount < 7){
+                console.log(yourCount);
+               var clickRed = document.getElementById("butRed");
+               var clickGre = document.getElementById("butGre");
+               var clickYel = document.getElementById("butYel");
+               var clickBlue = document.getElementById("butBlu");
+                clickRed.addEventListener("click", playRed);
+                clickGre.addEventListener("click", playGre);
+                clickYel.addEventListener("click", playYel);
+                clickBlue.addEventListener("click", playBlu);
+
         }
-            alert("Player turn over");
-            console.log("your guess ", yourList);
-            console.log("Mine ", myList);
-    }
+
+
             function playRed(){
-                yourList.push("1");
-                console.log("1");
+                if (yourCount <= 4){
+                    document.getElementById("butRed").style.opacity = "0.8";
+                    document.getElementById("butGre").style.opacity = "0.8";
+                    document.getElementById("butYel").style.opacity = "0.8";
+                    document.getElementById("butBlu").style.opacity = "0.8";                    
+                yourList.push(1);
+                console.log("1", yourCount);
                 document.getElementById("butRed").style.opacity = "0.4";
-                goCount++;
+                yourCount++;
+                }
+                else{
+                gameCheck();
+                console.log("your guess ", yourList);
+
+    }
             }
             function playGre(){
-                yourList.push("2");
-                console.log("2");
+                if (yourCount <= 4){
+                    document.getElementById("butRed").style.opacity = "0.8";
+                    document.getElementById("butGre").style.opacity = "0.8";
+                    document.getElementById("butYel").style.opacity = "0.8";
+                    document.getElementById("butBlu").style.opacity = "0.8";                    
+                yourList.push(2);
+                console.log("2", yourCount);
                 document.getElementById("butGre").style.opacity = "0.4";
-                goCount++;
+                yourCount++;
+                }
+                else{
+                gameCheck();
+                console.log("your guess ", yourList);
+
+    }
             }
             function playYel(){
-                yourList.push("3");
-                console.log("3");
+                if (yourCount <= 4){
+                    document.getElementById("butRed").style.opacity = "0.8";
+                    document.getElementById("butGre").style.opacity = "0.8";
+                    document.getElementById("butYel").style.opacity = "0.8";
+                    document.getElementById("butBlu").style.opacity = "0.8";                    
+                yourList.push(3);
+                console.log("3", yourCount);
                 document.getElementById("butYel").style.opacity = "0.4";
-                goCount++;
+                yourCount++;
+                }
+                else{
+                gameCheck();
+                console.log("your guess ", yourList);
+
+    }
             }
             function playBlu(){
-                yourList.push("4");
-                console.log("4");
+                if (yourCount <= 4){
+                    document.getElementById("butRed").style.opacity = "0.8";
+                    document.getElementById("butGre").style.opacity = "0.8";
+                    document.getElementById("butYel").style.opacity = "0.8";
+                    document.getElementById("butBlu").style.opacity = "0.8";                    
+                yourList.push(4);
+                console.log("4", yourCount);
                 document.getElementById("butBlu").style.opacity = "0.4";
-                goCount++;
-            }
+                yourCount++;
+                }
+                else{
+                gameCheck();
+                console.log("your guess ", yourList);
 
+    }
+            }
+        }
+
+        function gameCheck(){
+            if (parseInt(myList) == parseInt(yourList)){
+                alert("Congrats!")
+            }
+            else {
+                alert("Unlucky. I picked " + myList + " and you picked " + yourList + ".")
+            }
+        }
 
         /*  ------------------ CONSOLE.LOG EVERYTHING ---------------------
 
@@ -119,6 +178,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         Failed, it was red, blue, green etc
         */
-    }
+    
 
 });
