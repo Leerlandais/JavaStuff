@@ -1,0 +1,124 @@
+footer {
+    position: sticky;
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+    bottom: 0;
+}
+
+#copyright{                 
+    transition: transform 50s ease-in-out;
+}
+
+#copyright:hover {
+    transform: rotateY(-36000deg);
+   
+}
+
+body{
+    background-color: cadetblue;
+    cursor: default;
+}
+
+a{
+    color: blue;
+}
+h1{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 48px;
+    font-family: cursive;
+}
+
+h2{
+    margin-left: 25px;
+    font-family: cursive;
+}
+
+.row{
+    display: flex;
+    margin-left: 100px;
+}
+
+.column{
+    width: 50%;
+}
+
+#StepDiv{
+padding-top: 160px;
+padding-right: 200px;
+}
+
+#StepDiv p {
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: cursive;
+    font-size: 24px;
+}
+
+#TableDiv{
+padding-left: 200px;
+}
+
+#StepDiv table tr, #StepDiv table td{
+width: 1222px;
+height: 462px;
+border: none;
+}
+
+.hidden{
+    border: none;
+}
+
+#guide{
+    opacity: 0;
+    color: firebrick;
+}
+
+#tab1, #tab2{
+
+    text-align: center;
+    margin-left: 25px;
+}
+
+
+td, tr{
+    color: black;
+    width: 150px;
+    height: 150px;
+    border: 2px solid;
+}
+
+.tabhead, .tabhead th{
+    font-size: 24px;
+    text-decoration: underline;
+    height: 75px;
+    width: 150px;
+}
+
+.visible {
+
+    color: chartreuse;
+    cursor: pointer;
+}
+
+.gitloc{
+    font-size: xx-large;
+   color: aliceblue;
+   text-decoration: underline overline;
+ }
+
+
+/*
+#StepDiv{
+    display: inline-flex;
+    margin: 100px 0px 100px 200px ;
+} */
+
+
+#StepDisp{
+    width: 500px;
+    margin-left: 50px;
+
+}
+
