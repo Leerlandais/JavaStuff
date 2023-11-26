@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var goCount = 0;
         var myList = [];
+        var yourList = [];
         while (goCount < 5){
             document.getElementById("butRed").style.opacity = "0.4";
             document.getElementById("butGre").style.opacity = "0.4";
@@ -42,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
             console.log(myList);
             if (confirm("Your turn, ready?") === true){
+                goCount = 0;
                 yourGo();
             }
             else{
@@ -64,8 +66,46 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         function yourGo(){
-            alert("Got this far");
+            document.getElementById("butRed").style.opacity = "0.8";
+            document.getElementById("butGre").style.opacity = "0.8";
+            document.getElementById("butYel").style.opacity = "0.8";
+            document.getElementById("butBlu").style.opacity = "0.8";
+            for (goCount = 0; goCount < 5; goCount++) {
+            document.getElementById("butRed").onclick = playRed;
+            document.getElementById("butGre").onclick = playGre;
+            document.getElementById("butYel").onclick = playYel;
+            document.getElementById("butBlu").onclick = playBlu;
+            
         }
+            alert("Player turn over");
+            console.log("your guess ", yourList);
+            console.log("Mine ", myList);
+    }
+            function playRed(){
+                yourList.push("1");
+                console.log("1");
+                document.getElementById("butRed").style.opacity = "0.4";
+                goCount++;
+            }
+            function playGre(){
+                yourList.push("2");
+                console.log("2");
+                document.getElementById("butGre").style.opacity = "0.4";
+                goCount++;
+            }
+            function playYel(){
+                yourList.push("3");
+                console.log("3");
+                document.getElementById("butYel").style.opacity = "0.4";
+                goCount++;
+            }
+            function playBlu(){
+                yourList.push("4");
+                console.log("4");
+                document.getElementById("butBlu").style.opacity = "0.4";
+                goCount++;
+            }
+
 
         /*  ------------------ CONSOLE.LOG EVERYTHING ---------------------
 
