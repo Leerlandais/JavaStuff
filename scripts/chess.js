@@ -12,11 +12,16 @@ var previousElement = null;
 var firstClick = null;
     document.getElementById("chessboard").addEventListener("click", function(event) {
         if (event.target.classList.contains("square")) {
-            console.log('Clicked square:', event.target.id);
+            console.log("Clicked square:", event.target.id);
             var pickSquare = event.target;
             
 
-            if (firstClick === null){
+            if(pickSquare.textContent === "" && firstClick === null){
+                firstClick = firstClick;
+                console.log("clicked empty")
+            }
+            
+            else if (firstClick === null){
             firstClick = pickSquare;
             }
             else {
