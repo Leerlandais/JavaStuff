@@ -5,10 +5,13 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("butStart").onclick = startSimon;
     function startSimon(){
         setTimeout(function() {
-        document.getElementById("butStart").style.opacity = "0";
+        document.getElementById("butStart").style.opacity = "0";    
+        document.getElementById("SimonStart").style.opacity = "0";
+        document.getElementById("SimonStart").disabled = true;
+
         var goes = 5; // add user defined level soon
       
-        while (goCount < 5){
+        while (goCount < 1){
         
             var pingPick = Math.floor(Math.random() * 4) + 1;
             if (pingPick === 1){
@@ -88,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
             yourList = [];
 
             var yourCount = 0;
-            if (yourCount < 7){
+            if (yourCount < 1){
                 console.log(yourCount);
                var clickRed = document.getElementById("butRed");
                var clickGre = document.getElementById("butGre");
@@ -103,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
             function playRed(){
-                if (yourCount <= 4){
+                if (yourCount < 1){
                     document.getElementById("butRed").style.opacity = "0.8";
                     document.getElementById("butGre").style.opacity = "0.8";
                     document.getElementById("butYel").style.opacity = "0.8";
@@ -120,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
             }
             function playGre(){
-                if (yourCount <= 4){
+                if (yourCount < 1){
                     document.getElementById("butRed").style.opacity = "0.8";
                     document.getElementById("butGre").style.opacity = "0.8";
                     document.getElementById("butYel").style.opacity = "0.8";
@@ -137,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
             }
             function playYel(){
-                if (yourCount <= 4){
+                if (yourCount < 1){
                     document.getElementById("butRed").style.opacity = "0.8";
                     document.getElementById("butGre").style.opacity = "0.8";
                     document.getElementById("butYel").style.opacity = "0.8";
@@ -154,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
             }
             function playBlu(){
-                if (yourCount <= 4){
+                if (yourCount < 1){
                     document.getElementById("butRed").style.opacity = "0.8";
                     document.getElementById("butGre").style.opacity = "0.8";
                     document.getElementById("butYel").style.opacity = "0.8";
@@ -174,7 +177,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function gameCheck(){
             if (parseInt(myList) == parseInt(yourList)){
-                alert("Congrats!")
+                alert("Congrats!");
+                startSimon();
             }
             else {
                 alert("Unlucky. I picked " + myList + " and you picked " + yourList + ".")

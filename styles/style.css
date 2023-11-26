@@ -147,3 +147,10 @@ button{
 .wPawn{
     color: antiquewhite;
 }
+
+#SimonStart{
+    margin: 0;
+    background-color: darkgoldenrod;
+    height: 200px;
+    width: 500px;
+}
