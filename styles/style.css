@@ -99,3 +99,7 @@ button{
     background-color: darkgoldenrod;
     text-align: center;
 }
+
+.dimmed{
+    opacity: 0.4;
+}
