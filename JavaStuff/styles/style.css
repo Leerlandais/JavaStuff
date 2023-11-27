@@ -1,0 +1,156 @@
+footer {
+    position: sticky;
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+    bottom: 0;
+}
+
+#copyright{                 
+    transition: transform 50s ease-in-out;
+}
+
+#copyright:hover {
+    transform: rotateY(-36000deg);
+   
+}
+
+body{
+    background-color: #f4d292;
+    font-family: cursive;
+    font-size: 24px;
+}
+
+h1{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 48px;
+}
+
+h2{
+    text-decoration: underline;
+    font-size: 24px;
+}
+
+div{
+    padding: 50px;
+
+}
+
+ul{
+    padding-left: 50px;
+}
+
+button{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    margin-left: 47%;
+
+}
+
+#home{
+    display: block;
+}
+
+#mathTab{
+    padding-left: 750px;
+}
+
+#homediv{
+    padding-left: 500px;
+}
+
+#simonTab{
+    padding-left: 400px;
+}
+
+#simonTab tr{
+    height: 200px;
+    width: 500px;
+    border: 2px solid;
+}
+
+#simonTab td{
+    height: 200px;
+    width: 500px;
+    border: 2px solid;
+}
+
+.hidden{
+    border: none !important;
+    color: red;
+}
+
+#butRed{
+    background-color: red;
+}
+#butGre{
+    background-color: green;
+}
+#butYel{
+    background-color: yellow;
+}
+#butBlu{
+    background-color: blue;
+}
+
+#butStart{
+    background-color: darkgoldenrod;
+    text-align: center;
+}
+
+.dimmed{
+    opacity: 0.4;
+}
+
+#chessboard{
+    border: 2px solid;
+    text-align: center;
+    margin-left: 500px;
+    border-collapse: collapse;
+}
+
+#chessboard tr:nth-child(even) td:nth-child(even), #chessboard tr:nth-child(odd) td:nth-child(odd) {
+    background: #a68a64;
+}
+
+#chessboard tr:nth-child(odd) td:nth-child(even), #chessboard tr:nth-child(even) td:nth-child(odd) {
+    background: #582f0e;
+}
+
+.square{
+    height: 80px;
+    width: 80px;
+}
+
+.right{
+    background-color: #83623e !important;
+    border: 2px solid;
+    height: 80px;
+    width: 40px;
+}
+
+.bottom{
+    background-color: #83623e !important;
+    border: 2px solid;
+    height: 40px;
+    width: 80px;
+}
+
+.corner{
+    background-color: #83623e !important;
+    height: 40px;
+    width: 40px;
+}
+
+.wPawn{
+    color: antiquewhite;
+}
+
+#SimonStart{
+    margin: 0;
+    background-color: darkgoldenrod;
+    height: 200px;
+    width: 500px;
+}
