@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var goes = 5; // add user defined level soon
       
-        while (goCount < 1){
+        while (goCount < 5){
         
             var pingPick = Math.floor(Math.random() * 4) + 1;
             if (pingPick === 1){
@@ -89,31 +89,49 @@ document.addEventListener("DOMContentLoaded", function() {
     function yourGo(){
 
             yourList = [];
-
             var yourCount = 0;
-            if (yourCount < 1){
                 console.log(yourCount);
-               var clickRed = document.getElementById("butRed");
-               var clickGre = document.getElementById("butGre");
-               var clickYel = document.getElementById("butYel");
-               var clickBlue = document.getElementById("butBlu");
-                clickRed.addEventListener("click", playRed);
-                clickGre.addEventListener("click", playGre);
-                clickYel.addEventListener("click", playYel);
-                clickBlue.addEventListener("click", playBlu);
-
-        }
+                document.getElementById("butRed").style.opacity = "0.8";
+                document.getElementById("butGre").style.opacity = "0.8";
+                document.getElementById("butYel").style.opacity = "0.8";
+                document.getElementById("butBlu").style.opacity = "0.8";
+                var clickRed = document.getElementById("butRed");
+                var clickGre = document.getElementById("butGre");
+                var clickYel = document.getElementById("butYel");
+                var clickBlue = document.getElementById("butBlu");
+                 clickRed.addEventListener("click", playRed);
+                 clickGre.addEventListener("click", playGre);
+                 clickYel.addEventListener("click", playYel);
+                 clickBlue.addEventListener("click", playBlu);
+            
 
 
             function playRed(){
-                if (yourCount < 1){
-                    document.getElementById("butRed").style.opacity = "0.8";
-                    document.getElementById("butGre").style.opacity = "0.8";
-                    document.getElementById("butYel").style.opacity = "0.8";
-                    document.getElementById("butBlu").style.opacity = "0.8";                    
+                if (yourCount < 5){
+                    document.getElementById("butRed").style.opacity = "0.4";
+                    document.getElementById("butGre").style.opacity = "0.4";
+                    document.getElementById("butYel").style.opacity = "0.4";
+                    document.getElementById("butBlu").style.opacity = "0.4";                    
                 yourList.push(1);
                 console.log("1", yourCount);
-                document.getElementById("butRed").style.opacity = "0.4";
+                document.getElementById("butRed").style.opacity = "0.8";
+                yourCount++;
+                }
+                else{
+                gameCheck();
+                console.log("your guess ", yourList);
+
+                }
+            }
+            function playYel(){
+                if (yourCount < 5){
+                    document.getElementById("butRed").style.opacity = "0.4";
+                    document.getElementById("butGre").style.opacity = "0.4";
+                    document.getElementById("butYel").style.opacity = "0.4";
+                    document.getElementById("butBlu").style.opacity = "0.4";                    
+                yourList.push(2);
+                console.log("2", yourCount);
+                document.getElementById("butRed").style.opacity = "0.8";
                 yourCount++;
                 }
                 else{
@@ -123,31 +141,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
             }
             function playGre(){
-                if (yourCount < 1){
-                    document.getElementById("butRed").style.opacity = "0.8";
-                    document.getElementById("butGre").style.opacity = "0.8";
-                    document.getElementById("butYel").style.opacity = "0.8";
-                    document.getElementById("butBlu").style.opacity = "0.8";                    
-                yourList.push(2);
-                console.log("2", yourCount);
-                document.getElementById("butGre").style.opacity = "0.4";
-                yourCount++;
-                }
-                else{
-                gameCheck();
-                console.log("your guess ", yourList);
-
-    }
-            }
-            function playYel(){
-                if (yourCount < 1){
-                    document.getElementById("butRed").style.opacity = "0.8";
-                    document.getElementById("butGre").style.opacity = "0.8";
-                    document.getElementById("butYel").style.opacity = "0.8";
-                    document.getElementById("butBlu").style.opacity = "0.8";                    
+                if (yourCount < 5){
+                    document.getElementById("butRed").style.opacity = "0.4";
+                    document.getElementById("butGre").style.opacity = "0.4";
+                    document.getElementById("butYel").style.opacity = "0.4";
+                    document.getElementById("butBlu").style.opacity = "0.4";                    
                 yourList.push(3);
                 console.log("3", yourCount);
-                document.getElementById("butYel").style.opacity = "0.4";
+                document.getElementById("butYel").style.opacity = "0.8";
                 yourCount++;
                 }
                 else{
@@ -157,14 +158,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
             }
             function playBlu(){
-                if (yourCount < 1){
-                    document.getElementById("butRed").style.opacity = "0.8";
-                    document.getElementById("butGre").style.opacity = "0.8";
-                    document.getElementById("butYel").style.opacity = "0.8";
-                    document.getElementById("butBlu").style.opacity = "0.8";                    
+                if (yourCount < 5){
+                    document.getElementById("butRed").style.opacity = "0.4";
+                    document.getElementById("butGre").style.opacity = "0.4";
+                    document.getElementById("butYel").style.opacity = "0.4";
+                    document.getElementById("butBlu").style.opacity = "0.4";                    
                 yourList.push(4);
                 console.log("4", yourCount);
-                document.getElementById("butBlu").style.opacity = "0.4";
+                document.getElementById("butBlu").style.opacity = "0.8";
                 yourCount++;
                 }
                 else{
@@ -173,18 +174,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
             }
-        }
+        
 
         function gameCheck(){
             if (parseInt(myList) == parseInt(yourList)){
                 alert("Congrats!");
+                myList = [];
+                yourList= [];
+                yourCount =[];
+                goCount = [];
                 startSimon();
             }
             else {
                 alert("Unlucky. I picked " + myList + " and you picked " + yourList + ".")
+                myList = [];
+                yourList= [];
+                yourCount =[];
+                goCount = [];
+                startSimon();
             }
         }
-
+    }
         /*  ------------------ CONSOLE.LOG EVERYTHING ---------------------
 
         random 1-4, light button, goCount++, 
