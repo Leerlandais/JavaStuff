@@ -7,38 +7,60 @@ var myGoCounter = 0;                                                            
         var myGoCounter = 0;                                                                                                            // sets myGoCounter to 0. I'll change this later to be incremental
         var myPicks = [];                                                                                                               // creates an array to store my random choices
     
-        function RunChoice() {                                                                                                          // starts the function, nested in GmaeStaty
-            if (myGoCounter < 5) {                                                                                                      // checks the repeats
+        function RunChoice() {                                                                                                          // starts the function, nested in GameStart
+            if (myGoCounter < 5) {                                                                                                      // checks the repeat counter
                 var myPick = Math.floor(Math.random() * 4) + 1;                                                                         // Picks a number
                 if (myPick === 1) {                                                                                                     // Decides action based on random
-                    console.log("1");
-                    myPicks.push(myPick);
-                    console.log("MyArray : " + myPicks);
+                    myPicks.push(myPick);                                                                                               // add the chosen number to Array
+                    pingRed();                                                                                                          // calls the relevant function
 
                 } else if (myPick === 2) {
                     console.log("2");
                     myPicks.push(myPick);
-                    console.log("MyArray : " + myPicks);
+                    pingGre();
 
                 } else if (myPick === 3) {
                     console.log("3");
                     myPicks.push(myPick);
-                    console.log("MyArray : " + myPicks);
+                    pingYel();
 
                 } else {
                     console.log("4");
                     myPicks.push(myPick);
-                    console.log("MyArray : " + myPicks);
+                    pingBlu();
 
                 }
-                myGoCounter++;
+                myGoCounter++;                                                                                                          //increments the counter
     
-                setTimeout(RunChoice, 1000);                                                                                            // Delay execution by 1 second
+                if (myGoCounter >= 5) {                                                                                                 // checks if repeats are done...
+                    console.log("doneRunChoice");                                                                                       // ...and logs this
+                
+                } else {   
+
+                    setTimeout(RunChoice, 1000);                                                                                        // Delay execution by 1 second for each loop
+                }
+            }
+
+            function pingRed () {                                                                                                       // defines functions
+                console.log("MyArray : " + myPicks);                                                                                    // outputs new Array to console
+                console.log("1");                                                                                                       // outputs to console
+            }
+            function pingGre () {
+                console.log("MyArray : " + myPicks);                                                                                    
+                console.log("2");                                                                                                       
+            }
+            function pingYel () {
+                console.log("MyArray : " + myPicks);                                                                                    
+                console.log("3");                                                                                                       
+            }
+            function pingBlu () {
+                console.log("MyArray : " + myPicks);                                                                                    
+                console.log("4");                                                                                                       
             }
         }
     
-        RunChoice();
+        RunChoice();                                                                                                                    // Restarts everything (ubtil counter is hit)
     }
     
-        
+        // FOR TOMORROW: Place buttons, get theem to colour when pinged
 });
