@@ -109,11 +109,11 @@ var yourGoCounter = 0;
 
             function playRed() {                                                                                                        // logs the players choice
                 console.log("Player picked Red");
-                yourPicks.push(1);
-                yourGoCounter--;
+                yourPicks.push(1);                                                                                                      // adds choice to player Array
+                yourGoCounter--;                                                                                                        // reduces turn counter
                 console.log("YourArray " + yourPicks);
                 console.log(yourGoCounter);
-                if (yourGoCounter < 1) {                                                                                                 
+                if (yourGoCounter < 1) {                                                                                                 // Ends player turn
                     console.log("donePlayerChoice");                                                                                       
                     alert("Time to check");
                     winCheck();
@@ -159,8 +159,10 @@ var yourGoCounter = 0;
             function winCheck() {
                 console.log("me", myPicks);
                 console.log("you", yourPicks);
-            if (parseInt(yourPicks) === parseInt(myPicks)){
+            if (parseInt(yourPicks) === parseInt(myPicks)){                                                                             // compares Arrays
                 alert("Congratulations");
+                yourPicks = [];
+                myPicks = [];
             }
             else {
                 alert("That's not right, I picked " + myPicks + " and you picked " + yourPicks);
