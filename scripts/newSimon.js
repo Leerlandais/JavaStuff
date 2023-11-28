@@ -12,7 +12,7 @@ var gameRuns = 3;
         var myGoCounter = 0;                                                                                                            // sets myGoCounter to 0. I'll change this later to be incremental
         var lastPick = 0;
         myPicks = [];                                                                                                               
-    
+    document.getElementById("level").textContent = ("Level : " + (gameRuns - 2));
         function RunChoice() {                                                                                                          // starts the function, nested in GameStart
             if (myGoCounter < gameRuns) {                                                                                                      // checks the repeat counter
                 document.getElementById("redBut").style.backgroundColor = "antiquewhite";                                               // changes colour back to default
