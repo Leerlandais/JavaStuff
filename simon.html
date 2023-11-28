@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/newSim.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Simon</title>
+    <title>New Simon</title>
 </head>
 <body>
-    <h1>An ongoing project to make Simple Simon</h1>
-    <div id="simondiv">
-        <table id="simonTab">
+    <h1>New Version of Simon</h1>
+    
+    <fieldset id="SimonField">
+        <legend id="level">Simple Simon</legend>
+        <table id="SimonTab">
             <tr>
-                <td class="hidden"></td>
-                <td id="butRed" class="dimmed"></td>
-                <td class="hidden"></td>
+                <td></td>
+                <td><button id="redBut">Red</button></td>
+                <td></td>
             </tr>
             <tr>
-                <td id="butGre" class="dimmed"></td>
-                <td id="butStart"><button id="SimonStart">Start</button></td>
-                <td id="butYel" class="dimmed"></td>
+                <td><button id="greBut">Green</button></td>
+                <td><button id="startButton">Start</button></td>
+                <td><button id="yelBut">Yellow</button></td>
             </tr>
             <tr>
-                <td class="hidden"></td>
-                <td id="butBlu" class="dimmed"></td>
-                <td class="hidden"></td>
+                <td></td>
+                <td><button id="bluBut">Blue</button></td>
+                <td></td>
             </tr>
         </table>
-
-    </div>
-    <a href="index.html" id="home">Go Home</a>
-    <footer>
-        <hr>
-        <h4 id="copyright"> 
-            &copy; Lee Brennan
-        </h4>
-        <hr>    
-       </footer>    
-<script src="scripts/simon.js"></script>
+        <h2 id="PlayerTurn"></h2>
+        
+    </fieldset>
+    
+    
+<script src="scripts/Simon.js"></script>    
 </body>
 </html>
