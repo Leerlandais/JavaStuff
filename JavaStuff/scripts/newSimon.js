@@ -9,6 +9,11 @@ var myGoCounter = 0;                                                            
     
         function RunChoice() {                                                                                                          // starts the function, nested in GameStart
             if (myGoCounter < 5) {                                                                                                      // checks the repeat counter
+                document.getElementById("redBut").style.backgroundColor = "antiquewhite";                                               // changes colour back to default
+                document.getElementById("greBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("yelBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("bluBut").style.backgroundColor = "antiquewhite";              
+
                 var myPick = Math.floor(Math.random() * 4) + 1;                                                                         // Picks a number
                 if (myPick === 1) {                                                                                                     // Decides action based on random
                     myPicks.push(myPick);                                                                                               // add the chosen number to Array
@@ -42,18 +47,22 @@ var myGoCounter = 0;                                                            
             }
 
             function pingRed () {                                                                                                       // defines functions
+                document.getElementById("redBut").style.backgroundColor = "red";                                                        // changes colour of button
                 console.log("MyArray : " + myPicks);                                                                                    // outputs new Array to console
                 console.log("1");                                                                                                       // outputs to console
             }
             function pingGre () {
+                document.getElementById("greBut").style.backgroundColor = "green";
                 console.log("MyArray : " + myPicks);                                                                                    
                 console.log("2");                                                                                                       
             }
             function pingYel () {
+                document.getElementById("yelBut").style.backgroundColor = "yellow";
                 console.log("MyArray : " + myPicks);                                                                                    
                 console.log("3");                                                                                                       
             }
             function pingBlu () {
+                document.getElementById("bluBut").style.backgroundColor = "blue";
                 console.log("MyArray : " + myPicks);                                                                                    
                 console.log("4");                                                                                                       
             }
