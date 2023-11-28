@@ -184,6 +184,10 @@ var myPick = 0;
                 alert("Congratulations");
                 yourPicks = [];
                 myPicks = [];
+                clickRed.removeEventListener("click", playRed);                                                                           // waits for a button to be clicked and launches related function
+                clickGre.removeEventListener("click", playGre);
+                clickYel.removeEventListener("click", playYel);
+                clickBlue.removeEventListener("click", playBlu);
             }
             else {
                 alert("That's not right, I picked " + myPicks + " and you picked " + yourPicks);
