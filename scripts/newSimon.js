@@ -179,17 +179,16 @@ var gameRuns = 3;
             }   
 
             function winCheck() {
-                console.log("me", myPicks);
-                console.log("you", yourPicks);
+
                 clickRed.removeEventListener("click", playRed);                                                                           // removes the event listener (prevents listener stacking :-D)
                 clickGre.removeEventListener("click", playGre);
                 clickYel.removeEventListener("click", playYel);
                 clickBlue.removeEventListener("click", playBlu);
             if (parseInt(yourPicks) === parseInt(myPicks)){                                                                             // compares Arrays
                 alert("Congratulations");
-                yourPicks = [];
-                myPicks = [];
+
                 gameRuns++;
+                console.log ("You :" + yourPicks + "Me :" + myPicks);
                 GameStart();
             }
             else {
