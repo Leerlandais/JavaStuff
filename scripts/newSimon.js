@@ -4,6 +4,8 @@ var yourPicks = [];                                                             
 var myGoCounter = 0;                                                                                                                    
 var yourGoCounter = 0;
 var myPick = 0;
+var gameRuns = 3;
+
 
     document.getElementById("startButton").onclick = GameStart;                                                                         // finds button and starts GameStart once clicked
     function GameStart() {                                                                                                              // starts the game
@@ -12,12 +14,12 @@ var myPick = 0;
         myPicks = [];                                                                                                               
     
         function RunChoice() {                                                                                                          // starts the function, nested in GameStart
-            if (myGoCounter < 5) {                                                                                                      // checks the repeat counter
+            if (myGoCounter < gameRuns) {                                                                                                      // checks the repeat counter
                 document.getElementById("redBut").style.backgroundColor = "antiquewhite";                                               // changes colour back to default
                 document.getElementById("greBut").style.backgroundColor = "antiquewhite";            
                 document.getElementById("yelBut").style.backgroundColor = "antiquewhite";            
                 document.getElementById("bluBut").style.backgroundColor = "antiquewhite";    
-                console.log("goes", myGoCounter +1);          
+                console.log("goes ", myGoCounter +1, " runs", gameRuns);          
 
                 myPick = Math.floor(Math.random() * 4) + 1;                                                                         // Picks a number
                 if (myPick === lastPick){                                                                                               // prevents number repetition (temporary until I find out how to make them flash better)
@@ -53,7 +55,7 @@ var myPick = 0;
                 }
                 //myGoCounter++;                                                                                                          //increments the counter
     
-                if (myGoCounter >= 5) {                                                                                                 // checks if repeats are done...
+                if (myGoCounter >= gameRuns) {                                                                                                 // checks if repeats are done...
                     console.log("doneRunChoice");                                                                                       // ...and logs this
                     lastPick = 0;
                     yourGoCounter = myGoCounter;
@@ -119,8 +121,7 @@ var myPick = 0;
                 yourGoCounter--;                                                                                                        // reduces turn counter
                 console.log("YourArray " + yourPicks);
                 console.log(yourGoCounter);
-                if (yourGoCounter < 1) {                                                                                                 // Ends player turn
-                    console.log("donePlayerChoice");                                                                                       
+                if (yourGoCounter < 1) {                                                                                                 // Ends player turn                                                                                       
                     alert("Time to check");
                     winCheck();
                 }                
@@ -180,17 +181,20 @@ var myPick = 0;
             function winCheck() {
                 console.log("me", myPicks);
                 console.log("you", yourPicks);
+                clickRed.removeEventListener("click", playRed);                                                                           // removes the event listener (prevents listener stacking :-D)
+                clickGre.removeEventListener("click", playGre);
+                clickYel.removeEventListener("click", playYel);
+                clickBlue.removeEventListener("click", playBlu);
             if (parseInt(yourPicks) === parseInt(myPicks)){                                                                             // compares Arrays
                 alert("Congratulations");
                 yourPicks = [];
                 myPicks = [];
-                clickRed.removeEventListener("click", playRed);                                                                           // waits for a button to be clicked and launches related function
-                clickGre.removeEventListener("click", playGre);
-                clickYel.removeEventListener("click", playYel);
-                clickBlue.removeEventListener("click", playBlu);
+                gameRuns++;
+                GameStart();
             }
             else {
                 alert("That's not right, I picked " + myPicks + " and you picked " + yourPicks);
+                location.reload()
             }
         }
         }
