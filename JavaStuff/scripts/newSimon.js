@@ -93,10 +93,7 @@ var yourGoCounter = 0;
     
         RunChoice();                                                                                                                    // Restarts everything (until counter is hit)
         function PlayerTurn() {
-            document.getElementById("redBut").style.backgroundColor = "antiquewhite";                                                   // changes colour back to default
-            document.getElementById("greBut").style.backgroundColor = "antiquewhite";            
-            document.getElementById("yelBut").style.backgroundColor = "antiquewhite";            
-            document.getElementById("bluBut").style.backgroundColor = "antiquewhite";
+
             console.log("Hi");
             yourPicks = [];
             var yourCount = 0;
@@ -119,6 +116,7 @@ var yourGoCounter = 0;
                 if (yourGoCounter < 1) {                                                                                                 
                     console.log("donePlayerChoice");                                                                                       
                     alert("Time to check");
+                    winCheck();
                 }                
             }
             function playGre() {
@@ -130,6 +128,7 @@ var yourGoCounter = 0;
                 if (yourGoCounter < 1) {                                                                                                 
                     console.log("donePlayerChoice");                                                                                       
                     alert("Time to check");
+                    winCheck();
                 }                
             }
             function playYel() {
@@ -141,6 +140,7 @@ var yourGoCounter = 0;
                 if (yourGoCounter < 1) {                                                                                                 
                     console.log("donePlayerChoice");                                                                                       
                     alert("Time to check");
+                    winCheck();
                 }                
             }
             function playBlu() {
@@ -152,8 +152,20 @@ var yourGoCounter = 0;
                 if (yourGoCounter < 1) {                                                                                                 
                     console.log("donePlayerChoice");                                                                                       
                     alert("Time to check");
+                    winCheck();
                 }                
             }   
+
+            function winCheck() {
+                console.log("me", myPicks);
+                console.log("you", yourPicks);
+            if (parseInt(yourPicks) === parseInt(myPicks)){
+                alert("Congratulations");
+            }
+            else {
+                alert("That's not right, I picked " + myPicks + " and you picked " + yourPicks);
+            }
+        }
         }
     }
     
