@@ -3,6 +3,7 @@ var myPicks = [];                                                               
 var yourPicks = [];                                                                                                                     // create an Array for player selection
 var myGoCounter = 0;                                                                                                                    
 var yourGoCounter = 0;
+var myPick = 0;
 
     document.getElementById("startButton").onclick = GameStart;                                                                         // finds button and starts GameStart once clicked
     function GameStart() {                                                                                                              // starts the game
@@ -18,10 +19,10 @@ var yourGoCounter = 0;
                 document.getElementById("bluBut").style.backgroundColor = "antiquewhite";    
                 console.log("goes", myGoCounter +1);          
 
-                var myPick = Math.floor(Math.random() * 4) + 1;                                                                         // Picks a number
+                myPick = Math.floor(Math.random() * 4) + 1;                                                                         // Picks a number
                 if (myPick === lastPick){                                                                                               // prevents number repetition (temporary until I find out how to make them flash better)
                     console.log("same pick");
-                    myGoCounter--;                                                                                                      // reduces go counter to ensure 5 numbers are picked
+            //        myGoCounter--;                                                                                                      // reduces go counter to ensure 5 numbers are picked
                     RunChoice();
                 }
                 
@@ -30,27 +31,27 @@ var yourGoCounter = 0;
                     lastPick = myPick;
                     myPicks.push(1);                                                                                               // add the chosen number to Array
                     pingRed();                                                                                                          // calls the relevant function
-
+                    myGoCounter++;   
                 } else if (myPick === 2) {
                     console.log("2");
                     lastPick = myPick;
                     myPicks.push(2);
                     pingGre();
-
+                    myGoCounter++;   
                 } else if (myPick === 3) {
                     console.log("3");
                     lastPick = myPick;
                     myPicks.push(3);
                     pingYel();
-
+                    myGoCounter++;   
                 } else {
                     console.log("4");
                     lastPick = myPick;
                     myPicks.push(4);
                     pingBlu();
-
+                    myGoCounter++;   
                 }
-                myGoCounter++;                                                                                                          //increments the counter
+                //myGoCounter++;                                                                                                          //increments the counter
     
                 if (myGoCounter >= 5) {                                                                                                 // checks if repeats are done...
                     console.log("doneRunChoice");                                                                                       // ...and logs this
