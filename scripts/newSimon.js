@@ -108,8 +108,13 @@ var myPick = 0;
                  clickYel.addEventListener("click", playYel);
                  clickBlue.addEventListener("click", playBlu);
 
-            function playRed() {                                                                                                        // logs the players choice
+            function playRed() {     
+                document.getElementById("redBut").style.backgroundColor = "antiquewhite";                                               // changes colour back to default
+                document.getElementById("greBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("yelBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("bluBut").style.backgroundColor = "antiquewhite";                                                                                                   // logs the players choice
                 console.log("Player picked Red");
+                document.getElementById("redBut").style.backgroundColor = "red";
                 yourPicks.push(1);                                                                                                      // adds choice to player Array
                 yourGoCounter--;                                                                                                        // reduces turn counter
                 console.log("YourArray " + yourPicks);
@@ -121,7 +126,12 @@ var myPick = 0;
                 }                
             }
             function playGre() {
+                document.getElementById("redBut").style.backgroundColor = "antiquewhite";                                               // changes colour back to default
+                document.getElementById("greBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("yelBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("bluBut").style.backgroundColor = "antiquewhite";
                 console.log("Player picked Green");
+                document.getElementById("greBut").style.backgroundColor = "green";                
                 yourPicks.push(2);
                 yourGoCounter--;
                 console.log("YourArray " + yourPicks);
@@ -133,7 +143,12 @@ var myPick = 0;
                 }                
             }
             function playYel() {
+                document.getElementById("redBut").style.backgroundColor = "antiquewhite";                                               // changes colour back to default
+                document.getElementById("greBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("yelBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("bluBut").style.backgroundColor = "antiquewhite";
                 console.log("Player picked Yellow");
+                document.getElementById("yelBut").style.backgroundColor = "yellow";                
                 yourPicks.push(3);
                 yourGoCounter--;
                 console.log("YourArray " + yourPicks);
@@ -145,7 +160,12 @@ var myPick = 0;
                 }                
             }
             function playBlu() {
+                document.getElementById("redBut").style.backgroundColor = "antiquewhite";                                               // changes colour back to default
+                document.getElementById("greBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("yelBut").style.backgroundColor = "antiquewhite";            
+                document.getElementById("bluBut").style.backgroundColor = "antiquewhite";
                 console.log("Player picked Blue");
+                document.getElementById("bluBut").style.backgroundColor = "blue";                
                 yourPicks.push(4);
                 yourGoCounter--;
                 console.log("YourArray " + yourPicks);
