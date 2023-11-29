@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
     function GameOn(){
-        let guessList = [];
+        let guessList = [];   //déclaration d'un Array
         var myNum = Math.floor(Math.random() * parseInt(range) + 1);
         console.log(myNum);
         
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             attCount++;
             console.log("attCount", attCount);
-            guessList.push(yourNum);
+            guessList.push(yourNum);        // ajoute yourNum to the Array
             console.log("guessList", guessList);
             
             if (parseInt(yourNum) === myNum) {
