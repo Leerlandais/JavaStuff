@@ -113,7 +113,6 @@ button{
     max-width: 12%;
 }
 
-
 #MineTab tr, #MineTab td{
     height: 35px;
     width: 35px;
@@ -122,10 +121,7 @@ button{
     border-collapse: collapse;
 }
 
-
-
 .MineBut{
-    display: inline;
     margin: 0;
     height: 35px;
     width: 35px;

@@ -1,0 +1,52 @@
+h1{
+    text-shadow: 10px 10px 10px orange,
+                 10px 10px 30px magenta,
+                 10px 10px 10px orangered;
+                
+
+}
+
+ul {
+   list-style-type:none; 
+   padding-inline-start: 0;   /* same as padding-left: 0 */
+   
+}
+/*
+li{
+
+    float: left;  /* tous les elements de la liste float à gauche donc les elements suivants se met à droite *//*
+    margin-bottom: 20px;
+} */
+
+li{
+    display: inline-block;
+}
+main{
+    clear: left;   /* ça sert à annuler la float: left des <li> */
+}
+
+a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border: 1px solid;
+    width: 100px;
+    text-align: center;
+    margin-right: 25px;
+    padding: 10px;
+    
+}
+
+
+#tableau {
+    display: table;
+}
+
+.rangee {
+    display: table-row;
+}
+
+.rangee div {
+    display: table-cell;
+    padding: 10px;
+}
