@@ -118,6 +118,8 @@ button{
     height: 35px;
     width: 35px;
     color: #582f0e;
+    margin: 0;
+    border-collapse: collapse;
 }
 
 

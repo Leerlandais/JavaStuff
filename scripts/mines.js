@@ -5,11 +5,21 @@ var hereBombHere = [];
 document.getElementById("MineStart").onclick = setBombs;
 
 function setBombs () {
-        
+    var bombReset = document.getElementsByClassName("MineBut");
+        for (let i = 0;i < bombReset.length; i++){
+            bombReset[i].style.backgroundColor = "white";
+        }
+     hereBombHere = [];   
+
     for (var i = 0; i < 8; i++){
         bombHere = Math.floor(Math.random() * 64);
         hereBombHere.push(bombHere);
-        console.log(hereBombHere);
+    }
+    console.log(hereBombHere);
+    for (var i = 0; i < hereBombHere.length; i++){
+        var bombSpot = hereBombHere[i];
+        var bombPlace = gridPos[bombSpot];
+        document.getElementById(bombPlace).style.backgroundColor = "red";
     }
 }
 
