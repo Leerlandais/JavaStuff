@@ -54,11 +54,11 @@ function setBombs () {
       bombHintAdd = hereBombHere[i] +11;
       bombHint[bombHintAdd] = bombHint[bombHintAdd] +1;
       }
-      console.log("bombHint : ", bombHint, hereBombHere.length);
+      console.log("bombHint : ", bombHint, hereBombHere);
 
-      for (var i = 0; i < bombHint.length; i++ ){
-          document.getElementById(gridPos[1]).style.borderColor = "orange";
-      }
+      for (var i = 0; i < gridPos.length; i++ ){
+          document.getElementById(gridPos[i]).textContent = bombHint[i];
+              }
 }
 
 
