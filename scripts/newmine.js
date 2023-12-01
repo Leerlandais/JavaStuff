@@ -33,10 +33,14 @@ function setBombs () {
         document.getElementById(bombPlace).style.backgroundColor = "red";   // and finally, it runs through that and makes things red
         
     }
-    for (var i = 0; i < hereBombHere.length; i++){
-//      console.log("hereBombHere", hereBombHere);                   again an example of using log to find problems. I put this here because the rest of the loop wasn't functioning correctly and I wanted to ensure hereBombHere was still complete (which it was, meaning my problem is further along)
-      var bombHintAdd = hereBombHere[i];
-      bombHint[bombHintAdd] = bombHint[bombHintAdd] +9; 
+
+// Here's where thing start getting ugly///
+
+
+    for (var i = 0; i < hereBombHere.length; i++){                 // start a loop that runs for the length of hereBombHere (which is 8 but can be increased easily to any size)  
+//      console.log("hereBombHere", hereBombHere);                   again an example of using log to find problems. I put this here because the rest of the loop wasn't functioning correctly and I wanted to ensure hereBombHere was still complete (which it was, meaning my problem is further along) - Update, it's an hour later and I've fixed it
+      var bombHintAdd = hereBombHere[i];                           // sets any position containing a bomb to a value far higher than any other square (this will be used later to verify if a bomb is clicked )
+      bombHint[bombHintAdd] = bombHint[bombHintAdd] +9;            // I really want to find a way to do this cleaner. It searches any square adjacent to a bomb and increases its value by 1 - there has to be a way to reduce the load
       bombHintAdd = hereBombHere[i] -11;
       bombHint[bombHintAdd] = bombHint[bombHintAdd] +1;
       bombHintAdd = hereBombHere[i] -10;
@@ -57,7 +61,7 @@ function setBombs () {
       console.log("bombHint : ", bombHint, hereBombHere);
 
       for (var i = 0; i < gridPos.length; i++ ){
-          document.getElementById(gridPos[i]).textContent = bombHint[i];
+          document.getElementById(gridPos[i]).textContent = bombHint[i];        // ages spent trying to figure this out. Was chatting to E*** via WhatsApp and laid out the problem step by step and solved it by seeing it laid out - my original logic was trying too hard to find the relevant index - LESSON : ALWAYS BREAK PROBLEMS DOWN
               }
 }
 
