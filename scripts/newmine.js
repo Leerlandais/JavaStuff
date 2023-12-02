@@ -6,6 +6,10 @@ var hereBombHere = [];    // this array is for where the bombs will be placed
 var bombSigns = [];       // this one takes care of the squares that will hold the hints
 
 document.getElementById("MineStart").onclick = setBombs;          // starts everything
+window.addEventListener('contextmenu', (ev) => {
+    ev.preventDefault();                                           // this prevents the menu opening on right-click - Now I just have to figure out how to get it to do something else
+    console.log('right clicked')
+  });
 
 function setBombs () {
 
@@ -73,7 +77,7 @@ function setBombs () {
 document.getElementById("outerMine").addEventListener("click", function(event) {
     if (event.target.classList.contains("MineCol")) {
         var butClick = event.target.id
-       console.log("clicked", butClick);
+        console.log("clicked", butClick);
        document.getElementById(butClick).style.color = "black";
        if(document.getElementById(butClick).textContent > 8){
         console.log("dead");
@@ -82,9 +86,9 @@ document.getElementById("outerMine").addEventListener("click", function(event) {
         document.getElementById("MineRestart").innerHTML = "You died. Click <span id='MineReload'>here</span> to try again"
         document.getElementById("MineStart").disabled = true;
         document.getElementById("MineReload").addEventListener("click", GameReload);
+        }    
+
     }
-    
-}
 });
 
 function GameReload(){
