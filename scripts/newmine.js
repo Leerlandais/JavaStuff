@@ -92,7 +92,10 @@ function GameRun(){                                                             
                if(document.getElementById(butClick).textContent > 8){
                 console.log("dead");                                                            // ......or kills you
                 document.getElementById(butClick).textContent = "KABOOOOOOM";
-                document.getElementById(butClick).style.backgroundColor = "red";
+                for(i = 0; i < hereBombHere.length; i++){
+                    document.getElementById(gridPos[hereBombHere[i]]).style.backgroundColor = "red";
+                }
+  
                 document.getElementById("MineRestart").innerHTML = "You died. Click <span id='MineReload'>here</span> to try again";
                 document.getElementById("MineStart").disabled = true;                           // disabled the Start Button because restarting doesn't clear the fiels
                 document.getElementById("MineReload").addEventListener("click", GameReload);    
@@ -136,6 +139,7 @@ function GameRun(){                                                             
                     document.getElementById("MineRestart").innerHTML = "You WIN!!! Click <span id='MineReload'>here</span> to play again";
                     for (i = 0;i < gridPos.length; i++){
                         document.getElementById(gridPos[i]).style.color = "green";
+                        alert("You Win");
                     }
                 }
             }
