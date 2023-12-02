@@ -72,36 +72,42 @@ function setBombs () {
       for (var i = 0; i < gridPos.length; i++ ){
           document.getElementById(gridPos[i]).textContent = bombHint[i];        // ages spent trying to figure this out. Was chatting to E*** via WhatsApp and laid out the problem step by step and solved it by seeing it laid out - my original logic was trying too hard to find the relevant index - LESSON : ALWAYS BREAK PROBLEMS DOWN
               }
+              GameRun();
 }
-
+function GameRun(){                                                                     // moved this part into a function to prevent minefield being clicked pre-start
 document.getElementById("outerMine").addEventListener("click", function(event) {
-    if (event.target.classList.contains("MineCol")) {
+    if (event.target.classList.contains("MineCol")) {                                   
         var butClick = event.target.id
         console.log("clicked", butClick);
-       document.getElementById(butClick).style.color = "black";
+       document.getElementById(butClick).style.color = "black";                         // sets a listener on all MineCol tiles (the playable ones) and reveals the bombHint when clicked.....
        if(document.getElementById(butClick).textContent > 8){
-        console.log("dead");
+        console.log("dead");                                                            // ......or kills you
         document.getElementById(butClick).textContent = "KABOOOOOOM";
         document.getElementById(butClick).style.backgroundColor = "red";
         document.getElementById("MineRestart").innerHTML = "You died. Click <span id='MineReload'>here</span> to try again"
-        document.getElementById("MineStart").disabled = true;
-        document.getElementById("MineReload").addEventListener("click", GameReload);
+        document.getElementById("MineStart").disabled = true;                           // disabled the Start Button because restarting doesn't clear the fiels
+        document.getElementById("MineReload").addEventListener("click", GameReload);    
         }    
-
+        var tileClear = gridPos.indexOf(butClick);
+        console.log("Here it is : ", tileClear);
+        if (bombHint[tileClear] === 0 && bombHint[tileClear - 1] === 0){
+            document.getElementById(gridPos[tileClear -1]).style.color = "black";
+            
+        }
     }
-});
+});    
+}
 
-function GameReload(){
+function GameReload(){                                                                   // refresh the page (will take this out once I figure out why my 'Clean the Field Loop isn't working)
     location.reload();
 }
 
 
 });
-
-// for tomorrow: Hide buttons that aren't visible to player
-// accept player input and change relevant display
+// NEXT STEPS
 // find a way to auto-empty logically empty squares
-
+// add win condition
+// add bomb marker by right click
 
 
        
