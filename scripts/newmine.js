@@ -11,6 +11,8 @@ window.addEventListener('contextmenu', (ev) => {
     console.log('right clicked')
   });
 
+
+
 function setBombs () {
 
     for (var i = 0; i < gridPos.length; i++ ){
@@ -82,6 +84,11 @@ function GameRun(){                                                             
                 console.log("clicked", butClick);
                document.getElementById(butClick).style.color = "black";                         // sets a listener on all MineCol tiles (the playable ones) and reveals the bombHint when clicked.....
                revealedTabs++;
+               window.addEventListener("click",
+               function(e) {
+                 if (e.ctrlKey) console.log("Shift, yay!");                                     // hopefully I'll be able to use this to add bomb guess markers
+               },
+               false);
                if(document.getElementById(butClick).textContent > 8){
                 console.log("dead");                                                            // ......or kills you
                 document.getElementById(butClick).textContent = "KABOOOOOOM";
@@ -142,9 +149,9 @@ function GameRun(){                                                             
 
 });
 // NEXT STEPS
-// find a way to auto-empty logically empty squares
-// add win condition
-// add bomb marker by right click
+// find a way to auto-empty logically empty squares (Done :)
+// add win condition  (almost)
+// add bomb marker by right click (line 89)
 
 
        
