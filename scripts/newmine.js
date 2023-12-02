@@ -90,9 +90,29 @@ document.getElementById("outerMine").addEventListener("click", function(event) {
         }    
         var tileClear = gridPos.indexOf(butClick);
         console.log("Here it is : ", tileClear);
-        if (bombHint[tileClear] === 0 && bombHint[tileClear - 1] === 0){
-            document.getElementById(gridPos[tileClear -1]).style.color = "black";
-            
+        if (bombHint[tileClear] === 0 && bombHint[tileClear - 1] === 0){                                // again, there has to be a neater way to do this 
+            document.getElementById(gridPos[tileClear -1]).style.color = "black";                       // any time a 0 is uncovered this reveals any adjacent zeroes
+        }
+        if (bombHint[tileClear] === 0 && bombHint[tileClear + 1] === 0){
+            document.getElementById(gridPos[tileClear +1]).style.color = "black";
+        }
+        if (bombHint[tileClear] === 0 && bombHint[tileClear - 11] === 0){
+            document.getElementById(gridPos[tileClear -11]).style.color = "black";
+        }
+        if (bombHint[tileClear] === 0 && bombHint[tileClear - 10] === 0){
+            document.getElementById(gridPos[tileClear -10]).style.color = "black";
+        }
+        if (bombHint[tileClear] === 0 && bombHint[tileClear - 9] === 0){
+            document.getElementById(gridPos[tileClear -9]).style.color = "black";
+        }
+        if (bombHint[tileClear] === 0 && bombHint[tileClear  + 9] === 0){
+            document.getElementById(gridPos[tileClear + 9]).style.color = "black";
+        }
+        if (bombHint[tileClear] === 0 && bombHint[tileClear  + 10] === 0){
+            document.getElementById(gridPos[tileClear + 10]).style.color = "black";
+        }
+        if (bombHint[tileClear] === 0 && bombHint[tileClear  + 11] === 0){
+            document.getElementById(gridPos[tileClear + 11]).style.color = "black";
         }
     }
 });    
