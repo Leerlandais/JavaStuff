@@ -13,8 +13,7 @@ document.getElementById("MineStart").onclick = setBombs;          // starts ever
 function setBombs () {
 
     for (var i = 0; i < gridPos.length; i++ ){
-        document.getElementById(gridPos[i]).textContent = "0"; 
-        document.getElementById(gridPos[i]).style.backgroundColor = "#f4d292";
+        document.getElementById(gridPos[i]).textContent = ""; 
     }
 
     var bombReset = document.getElementsByClassName("MineCol");         // first off, reset the colours of everything 
@@ -69,9 +68,9 @@ function setBombs () {
       }
       console.log("bombHint : ", bombHint, hereBombHere);
 
-      for (var i = 0; i < gridPos.length; i++ ){
+ /*     for (var i = 0; i < gridPos.length; i++ ){
           document.getElementById(gridPos[i]).textContent = bombHint[i];        // ages spent trying to figure this out. Was chatting to E*** via WhatsApp and laid out the problem step by step and solved it by seeing it laid out - my original logic was trying too hard to find the relevant index - LESSON : ALWAYS BREAK PROBLEMS DOWN
-              }
+              } */
               GameRun();
 }
 function GameRun(){                                                                     // moved this part into a function to prevent minefield being clicked pre-start
@@ -94,8 +93,10 @@ function GameRun(){                                                             
     
       });
         document.getElementById("outerMine").addEventListener("click", function(event) {
-            if (event.target.classList.contains("MineCol")) {                                   
+            if (event.target.classList.contains("MineCol")) { 
                 var butClick = event.target.id
+                var workDammit = gridPos.indexOf(butClick);
+                document.getElementById(butClick).textContent = bombHint[workDammit];                                  
                 console.log("clicked", butClick);
                document.getElementById(butClick).style.color = "black";                         // sets a listener on all MineCol tiles (the playable ones) and reveals the bombHint when clicked.....
 
@@ -118,27 +119,35 @@ function GameRun(){                                                             
                 var tileClear = gridPos.indexOf(butClick);
                 console.log("Here it is : ", tileClear);
                 if (bombHint[tileClear] === 0 && bombHint[tileClear - 1] === 0){                                // again, there has to be a neater way to do this 
-                    document.getElementById(gridPos[tileClear -1]).style.color = "black";                       // any time a 0 is uncovered this reveals any adjacent zeroes
+                    document.getElementById(gridPos[tileClear -1]).textContent = "0";
+                    document.getElementById(gridPos[tileClear -1]).style.color = "black";
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear + 1] === 0){
+                    document.getElementById(gridPos[tileClear +1]).textContent = "0";
                     document.getElementById(gridPos[tileClear +1]).style.color = "black";
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear - 11] === 0){
+                    document.getElementById(gridPos[tileClear -11]).textContent = "0";
                     document.getElementById(gridPos[tileClear -11]).style.color = "black";
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear - 10] === 0){
+                    document.getElementById(gridPos[tileClear -10]).textContent = "0";
                     document.getElementById(gridPos[tileClear -10]).style.color = "black";
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear - 9] === 0){
+                    document.getElementById(gridPos[tileClear -9]).textContent = "0";
                     document.getElementById(gridPos[tileClear -9]).style.color = "black";
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear  + 9] === 0){
+                    document.getElementById(gridPos[tileClear + 9]).textContent = "0";
                     document.getElementById(gridPos[tileClear + 9]).style.color = "black";
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear  + 10] === 0){
+                    document.getElementById(gridPos[tileClear + 10]).textContent = "0";
                     document.getElementById(gridPos[tileClear + 10]).style.color = "black";
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear  + 11] === 0){
+                    document.getElementById(gridPos[tileClear + 11]).textContent = "0";
                     document.getElementById(gridPos[tileClear + 11]).style.color = "black";
                 }
                 console.log("Tiles Cleared : ", revealedTabs);
