@@ -6,10 +6,7 @@ var hereBombHere = [];    // this array is for where the bombs will be placed
 var bombSigns = [];       // this one takes care of the squares that will hold the hints
 var revealedTabs = 0;     // this will take care of the win condition
 document.getElementById("MineStart").onclick = setBombs;          // starts everything
-window.addEventListener('contextmenu', (ev) => {
-    ev.preventDefault();                                           // this prevents the menu opening on right-click - Now I just have to figure out how to get it to do something else
-    console.log('right clicked')
-  });
+
 
 
 
@@ -17,6 +14,7 @@ function setBombs () {
 
     for (var i = 0; i < gridPos.length; i++ ){
         document.getElementById(gridPos[i]).textContent = "0"; 
+        document.getElementById(gridPos[i]).style.backgroundColor = "#f4d292";
     }
 
     var bombReset = document.getElementsByClassName("MineCol");         // first off, reset the colours of everything 
@@ -78,12 +76,29 @@ function setBombs () {
 }
 function GameRun(){                                                                     // moved this part into a function to prevent minefield being clicked pre-start
 
+    window.addEventListener('contextmenu', (ev) => {
+        ev.preventDefault();                                           // this prevents the menu opening on right-click - Now I just have to figure out how to get it to do something else
+        console.log("right clicked",);
+        var clicked = ev.target.id;
+        console.log("here : ", clicked);
+        var bombMark = gridPos.indexOf(clicked);
+        console.log("Please work = ", bombMark);
+        document.getElementById(clicked).style.backgroundColor = "aqua";
+        if (bombHint[bombMark] >= 9){
+            revealedTabs++;
+            console.log("This many : ", revealedTabs);
+        }else{
+            document.getElementById(clicked).style.backgroundColor = "aqua";
+            console.log("This many but you missed : ", revealedTabs);
+        }
+    
+      });
         document.getElementById("outerMine").addEventListener("click", function(event) {
             if (event.target.classList.contains("MineCol")) {                                   
                 var butClick = event.target.id
                 console.log("clicked", butClick);
                document.getElementById(butClick).style.color = "black";                         // sets a listener on all MineCol tiles (the playable ones) and reveals the bombHint when clicked.....
-               revealedTabs++;
+
                window.addEventListener("click",
                function(e) {
                  if (e.ctrlKey) console.log("Shift, yay!");                                     // hopefully I'll be able to use this to add bomb guess markers
@@ -104,38 +119,30 @@ function GameRun(){                                                             
                 console.log("Here it is : ", tileClear);
                 if (bombHint[tileClear] === 0 && bombHint[tileClear - 1] === 0){                                // again, there has to be a neater way to do this 
                     document.getElementById(gridPos[tileClear -1]).style.color = "black";                       // any time a 0 is uncovered this reveals any adjacent zeroes
-                    revealedTabs++;
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear + 1] === 0){
                     document.getElementById(gridPos[tileClear +1]).style.color = "black";
-                    revealedTabs++;
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear - 11] === 0){
                     document.getElementById(gridPos[tileClear -11]).style.color = "black";
-                    revealedTabs++;
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear - 10] === 0){
                     document.getElementById(gridPos[tileClear -10]).style.color = "black";
-                    revealedTabs++;
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear - 9] === 0){
                     document.getElementById(gridPos[tileClear -9]).style.color = "black";
-                    revealedTabs++;
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear  + 9] === 0){
                     document.getElementById(gridPos[tileClear + 9]).style.color = "black";
-                    revealedTabs++;
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear  + 10] === 0){
                     document.getElementById(gridPos[tileClear + 10]).style.color = "black";
-                    revealedTabs++;
                 }
                 if (bombHint[tileClear] === 0 && bombHint[tileClear  + 11] === 0){
                     document.getElementById(gridPos[tileClear + 11]).style.color = "black";
-                    revealedTabs++;
                 }
                 console.log("Tiles Cleared : ", revealedTabs);
-                if (revealedTabs >= 92){
+                if (revealedTabs >= 8){
                     document.getElementById("MineRestart").innerHTML = "You WIN!!! Click <span id='MineReload'>here</span> to play again";
                     for (i = 0;i < gridPos.length; i++){
                         document.getElementById(gridPos[i]).style.color = "green";
