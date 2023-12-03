@@ -1,0 +1,57 @@
+body{
+    background-color: #f4d292;
+}
+
+h1{
+    text-align: center;
+}
+
+#logicTable{
+    margin: 0 auto;
+    margin-top: 150px;
+    width: 550px;
+}
+
+.logButton{
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+    display: inline-block;
+    max-width: 550px;
+}
+
+.hideButton{
+    border: none;
+}
+
+.logPad{
+    margin-right: 5px;
+}
+
+.leftRow{
+    position: fixed;
+    left: 32%;
+    
+    
+}
+
+.topRow{
+    display: inline-flex;
+    position: relative;
+    left: 0;
+    writing-mode: vertical-rl;
+    height: px;
+    margin: 0;
+    margin-bottom: 5px;
+    margin-left: 14px;
+    font-weight: bolder;
+}
+
+#level1{
+    margin-left: 40%;
+}
+.startLogic{
+    margin-top: 50px;
+    height: 40px;
+    width: 150px;
+}
