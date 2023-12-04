@@ -83,7 +83,7 @@ function GameRun(){                                                             
         var bombMark = gridPos.indexOf(clicked);                       // takes the id of clicked square (e.g. b6) and finds the index of this in gridPos
         console.log("Please work = ", bombMark);                       // had my fingers crossed but it did indeed work 
 
-        if (document.getElementById(clicked).style.backgroundColor === "") {            // this part takes care of what happens on rClick. First off, check if the square is default colour
+        if (document.getElementById(clicked).style.backgroundColor !== "") {            // this part takes care of what happens on rClick. First off, check if the square is default colour
             if (bombHint[bombMark] > 8) {                                               // and if there is a bomb. Other than in a very highly unlikely situation, a non-bomb square will never have more than 6 points
                 console.log("Bing", bombHint[bombMark]);                                // Bing, Bang and Basta added to the steps to ensure that the correct option was being encountered
                 document.getElementById(clicked).style.backgroundColor = "aqua";        // So, if it was default colour and has a bomb, the square changes colour and....
@@ -98,6 +98,7 @@ function GameRun(){                                                             
                 revealedTabs--;                                                                 // and reduces that game score
                 console.log("This many : ", revealedTabs);
         } else {
+            console.log(document.getElementById(clicked).style.backgroundColor)
             document.getElementById(clicked).style.backgroundColor = "";                           // the only other possibility is aqua coloured and not containing a bomb
         }
     
