@@ -179,3 +179,14 @@ button{
 }
 
 
+#snakeSet{
+    height: 40vw;
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.gridXY{
+    border: 1px solid;
+    padding: 0;
+}
+

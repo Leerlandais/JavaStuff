@@ -1,0 +1,40 @@
+footer{
+    position: sticky;
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+    bottom: 0;
+}
+
+#copyright{                 
+    transition: transform 50s ease-in-out;
+}
+
+#copyright:hover{
+    transform: rotateY(-36000deg);   
+}
+
+body{
+    background-color: #f4d292;
+    font-family: cursive;
+    font-size: 24px;
+}
+
+h1{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 48px;
+}
+
+#snakeSet{
+    height: 40vw;
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.gridXY{
+    border: 1px solid;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
