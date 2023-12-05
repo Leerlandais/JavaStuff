@@ -87,19 +87,23 @@ function GameRun(){                                                             
             if (bombHint[bombMark] > 8) {                                               // and if there is a bomb. Other than in a very highly unlikely situation, a non-bomb square will never have more than 6 points
                 console.log("Bing", bombHint[bombMark]);                                // Bing, Bang and Basta added to the steps to ensure that the correct option was being encountered
                 document.getElementById(clicked).style.backgroundColor = "aqua";        // So, if it was default colour and has a bomb, the square changes colour and....
+                document.getElementById(clicked).style.boxShadow = "inset 2px 2px 2px red"; 
                 revealedTabs++;                                                         // ... 1 is added to the score for gameWin
             } else {                                                                    // else (that is, if it is default colour but doesn't contain a bomb)
                 console.log("Bang");                                                    // let me know via console
                 document.getElementById(clicked).style.backgroundColor = "aqua";        // and change the colour
+                document.getElementById(clicked).style.boxShadow = "inset 2px 2px 2px red";
             }
         } else if (document.getElementById(clicked).style.backgroundColor === "aqua" && bombHint[bombMark] > 8) { // else if (that is, if the colour of the square is not default (handled above) square is aqua and there is a bomb)
                 console.log("Basta");
                 document.getElementById(clicked).style.backgroundColor = "";                    // changes the colour back to default
+                document.getElementById(clicked).style.boxShadow = "";
                 revealedTabs--;                                                                 // and reduces that game score
                 console.log("This many : ", revealedTabs);
         } else {
             console.log(document.getElementById(clicked).style.backgroundColor)
             document.getElementById(clicked).style.backgroundColor = "";                           // the only other possibility is aqua coloured and not containing a bomb
+            document.getElementById(clicked).style.boxShadow = "";
         }
     
       });
@@ -110,6 +114,7 @@ function GameRun(){                                                             
                 document.getElementById(butClick).textContent = bombHint[workDammit];                                  
                 console.log("clicked", butClick);
                document.getElementById(butClick).style.color = "black";                         // sets a listener on all MineCol tiles (the playable ones) and reveals the bombHint when clicked.....
+               document.getElementById(butClick).style.boxShadow = "inset 2px 2px 2px red";
 /*
                window.addEventListener("click",                                                 // now that I have set up a rClick event, this is no longer needed. It does, however, correctly note a CtrlClick
                function(e) {
