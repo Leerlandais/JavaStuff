@@ -1,8 +1,9 @@
  
 const bigGrid = 551;                                                        // Yeah...551, spent 15 minutes trying to get it to be a box, without corners
 const bigGridFind = document.getElementById("snakeSet");                    // This is to find the element which will contain the grid
-const gridArray = [];                                                       // This is to hold the grid in an array for later use
-const gridFood = [];                                                        // This will be used to store the positions of "food"
+var gridArray = [];                                                       // This is to hold the grid in an array for later use
+// const gridFood = [];                                                        // This will be used to store the positions of "food"
+var gridFood = new Set();
 
 
     for (let i = 0; i < bigGrid; i++) {                                     // This is where things got tricky. Already, how to create a grid via JS (which of course isn't enough, the grid has to have class and id.
@@ -12,22 +13,33 @@ const gridFood = [];                                                        // T
       bigGridFind.appendChild(placeGrid);                                   // This relates back to the createElly bit and places it in the parent (the fieldset surrounding it all). The positioning and size is in the .css
       gridArray.push(placeGrid.id);                                         // and finally, slaps it all into the array created for later use
     }
-        console.log(gridArray);                                             // Fingers crossed, toes crossed, eyes fucking crossed. Hope this works (and as always, console log is my best friend)
+      console.log(gridArray);                                                     // Fingers crossed, toes crossed, eyes fucking crossed. Hope this works (and as always, console log is my best friend)
 
 
 document.getElementById("snakeSet").onclick = goSnake; 
 
 function goSnake(){
-  console.log("That's step 1");
+    console.log("That's step 1"); // and it works
+    while (gridFood.size < 8){
+      var foodSquare = Math.floor(Math.random() * 551)                      // picks a random number
+        if (!gridFood.has(foodSquare)){                                       // makes sure it's unique
+           gridFood.add(foodSquare);                                           // adds it to an array
+        }
+    }
+    
+    console.log("and Step 2", gridFood);                                    // usual console check to make sure everything is ok
+      gridFood.forEach(item => {                                          // this took some searching, I was trying to access gridFood as if it was an array. Sets work differently but in the end tidier. Far better than 'for(i < gridFood.length){etc etc}
+        console.log(item);
+        document.getElementById(gridArray[item]).style.backgroundColor = "green";     // changes the target square to green, eventual snake food (just need a snake first!!!)
+      });
 }
-
   
  
 
 
         // For tomorrow : 
 // Get the grid set up ---- (done)
-// Pick some UNIQUE random spots for food (let's say 8, which once at 4 will always stay at 4)
+// Pick some UNIQUE random spots for food (let's say 8, which once at 4 will always stay at 4) - First 8 done
 // Make a square or a line of squares (the snake)
 // Automate it's movement to always advance current direction (for the start, just from right to left) is square === free
 // Set it to die if wall === true
@@ -41,18 +53,4 @@ function goSnake(){
 
 
 
-// const hasBomb = new Set();                                  
-// while (hasBomb.size < 8){
-//  const bombHere = Math.floor(Math.random() * 100);          
-//  if (!hasBomb.has(bombHere) && !notHere.has(bombHere)){     
-//  hasBomb.add(bombHere);                                     
-// 
-// 
-//  hasBomb.forEach((value) => {                               
-//  hereBombHere.push(value);                                  
-// );
-// onsole.log("hereBombHere", hereBombHere);                   
-// or (var i = 0; i < hereBombHere.length; i++){               
-//   var bombSpot = hereBombHere[i];                           
-//   var bombPlace = gridPos[bombSpot];                        
-//   document.getElementById(bombPlace).style.backgroundColor = "#f4d292";
+
