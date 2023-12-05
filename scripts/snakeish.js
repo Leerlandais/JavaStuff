@@ -5,6 +5,7 @@ var gridArray = [];                                                       // Thi
 // const gridFood = [];                                                        // This will be used to store the positions of "food"
 var gridFood = new Set();
 var blockedSquares = ["275", "276", "277", "278", "279"];
+var snakeHead = "0";
 
 
     for (let i = 0; i < bigGrid; i++) {                                     // This is where things got tricky. Already, how to create a grid via JS (which of course isn't enough, the grid has to have class and id.
@@ -12,6 +13,7 @@ var blockedSquares = ["275", "276", "277", "278", "279"];
       placeGrid.classList.add("gridXY");                                    // New JS tool here, createElement...It's wonderful. Adds a <div> to the HTML (visible via 'Inspector'). Then it adds a class to each dic (the 551 of bigGrid)
       placeGrid.id = "x" + (i + 1);                                         // and adds a unique id to each one. I wanted a1...a30, b1...b30 etc but couldn't figure out how to do that                                   
       bigGridFind.appendChild(placeGrid);                                   // This relates back to the createElly bit and places it in the parent (the fieldset surrounding it all). The positioning and size is in the .css
+    //  placeGrid.textContent = placeGrid.id;  turn this on when I need to know a grid pos
       gridArray.push(placeGrid.id);                                         // and finally, slaps it all into the array created for later use
     }
       console.log(gridArray);                                                     // Fingers crossed, toes crossed, eyes fucking crossed. Hope this works (and as always, console log is my best friend)
@@ -20,10 +22,11 @@ var blockedSquares = ["275", "276", "277", "278", "279"];
 document.getElementById("snakeSet").onclick = goSnake; 
 
 function goSnake(){
+  document.getElementById("snakeSet").onclick = null;                       // This deactivates the snakeSet onclick listener, preventing this function from repeating itself
     console.log("That's step 1"); // and it works
     while (gridFood.size < 8){
       var foodSquare = Math.floor(Math.random() * 551)                      // picks a random number
-        if (!gridFood.has(foodSquare) && !blockedSquares.includes(foodSquare)){                                       // makes sure it's unique
+        if (!gridFood.has(foodSquare) && !blockedSquares.includes(foodSquare)){    // makes sure it's unique and not in squares reserved for the snake
            gridFood.add(foodSquare);                                           // adds it to an array
         }
     }
@@ -33,6 +36,12 @@ function goSnake(){
         console.log(item);
         document.getElementById(gridArray[item]).style.backgroundColor = "green";     // changes the target square to green, eventual snake food (just need a snake first!!!)
       });
+    
+  for(i = 0; i < blockedSquares.length; i++){    
+    document.getElementById("x"+blockedSquares[i]).style.backgroundColor = "blue";
+  }
+  snakeHead = blockedSquares[0];
+  document.getElementById("x"+snakeHead).style.backgroundColor = "red";
 }
   
  
