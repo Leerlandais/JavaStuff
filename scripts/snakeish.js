@@ -4,6 +4,7 @@ const bigGridFind = document.getElementById("snakeSet");                    // T
 var gridArray = [];                                                       // This is to hold the grid in an array for later use
 // const gridFood = [];                                                        // This will be used to store the positions of "food"
 var gridFood = new Set();
+var blockedSquares = ["275", "276", "277", "278", "279"];
 
 
     for (let i = 0; i < bigGrid; i++) {                                     // This is where things got tricky. Already, how to create a grid via JS (which of course isn't enough, the grid has to have class and id.
@@ -22,7 +23,7 @@ function goSnake(){
     console.log("That's step 1"); // and it works
     while (gridFood.size < 8){
       var foodSquare = Math.floor(Math.random() * 551)                      // picks a random number
-        if (!gridFood.has(foodSquare)){                                       // makes sure it's unique
+        if (!gridFood.has(foodSquare) && !blockedSquares.includes(foodSquare)){                                       // makes sure it's unique
            gridFood.add(foodSquare);                                           // adds it to an array
         }
     }
