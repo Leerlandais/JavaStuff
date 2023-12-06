@@ -1,9 +1,9 @@
  const bigGrid = 400;
  const bigGridFind = document.getElementById("snakeSet"); 
+ var gameRunning = false;
  var gridArray = [];
- var gridFood = [];
  var gridFood = new Set();
- var blockedSquares = ["190", "191", "192", "193", "194"];
+ var blockedSquares = [190, 191, 192, 193, 194];
  var snakeHead = "190";
  var snakeLength = "5";
  var snakeAss = parseInt(snakeHead) + parseInt(snakeLength);
@@ -23,43 +23,81 @@
 
  function goSnake(){
   document.getElementById("snakeSet").onclick = null
-  console.log("That's step 1"); 
   document.getElementById("190").style.backgroundColor = "red";
-
+  for (let i = parseInt(snakeHead) + 1; i < snakeAss; i++){
+    document.getElementById(i).style.backgroundColor = "blue";
+  }
+  console.log("Snake Placed"); 
+  
   while (gridFood.size < 8){
     var foodSquare = Math.floor(Math.random() * 400)
       if (!gridFood.has(foodSquare) && !blockedSquares.includes(foodSquare)){
          gridFood.add(foodSquare);
       }
   }
-
-  console.log("and Step 2", gridFood);
- 
-  gridFood.forEach(item => {
+    gridFood.forEach(item => {
     console.log(item);
     document.getElementById(gridArray[item]).style.backgroundColor = "green";
   });
-
-  for (let i = parseInt(snakeHead) + 1; i < snakeAss; i++){
-    console.log(i);
-    document.getElementById(i).style.backgroundColor = "blue";
-  }
+  console.log("Food Placed", gridFood);
  }
- 
  document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowUp") {
     console.log("up arrow pressed");
-    snakeDir = "Up";
+    snakeDir = -20;
+    moveSnake();
   } else if (e.key === "ArrowDown") {
-    snakeDir = "Down";
+    snakeDir = +20;
+    moveSnake();
     console.log("down arrow pressed");
   } else if (e.key === "ArrowLeft") {
-  snakeDir = "Left";
+  snakeDir = -1;
+  moveSnake();
   console.log("left arrow pressed");
 } else if (e.key === "ArrowRight") {
-  snakeDir = "Right";
+  snakeDir = +1;
+  moveSnake();
   console.log("right arrow pressed");
 }
+
+});
+function moveSnake() {
+  console.log("head : ", snakeHead);
+  console.log("ass : ", snakeAss);
+  if (gridFood.has(parseInt(snakeHead))){
+    console.log("Feeding Time");
+    snakeLength = parseInt(snakeLength) + 2;
+  }
+  console.log("moving : ", snakeDir);
+  console.log(parseInt(snakeHead) + snakeDir)
+  document.getElementById(parseInt(snakeHead) + snakeDir).style.backgroundColor = "red";
+  document.getElementById(parseInt(snakeHead)).style.backgroundColor = "blue";
+  document.getElementById(parseInt(snakeAss)).style.backgroundColor = "";
+  snakeHead = parseInt(snakeHead) + snakeDir;
+  console.log("head now : ", snakeHead);
+  snakeAss = snakeAss + snakeDir;
+  console.log("ass now : ", snakeAss);
+  console.log(parseInt(snakeHead) + snakeDir);
+
+
+}
+ 
+
+
+
+
+
+
+
+
+ /*
+
+
+if (gridFood.has(snakeHead)){
+  console.log("Feeding time");
+  snakeLength = snakeLength +2;
+}
+
 
 if (snakeDir === "Up"){
   console.log("UP, UP and Away");
@@ -89,7 +127,7 @@ if (snakeDir === "Down"){
   snakeAss = snakeAss - 1;
 }
 });
-
+*/
 /*
 
 const bigGrid = 551;                                                        // Yeah...551, spent 15 minutes trying to get it to be a box, without corners
