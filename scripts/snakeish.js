@@ -3,6 +3,11 @@
  var gridArray = [];
  var gridFood = [];
  var gridFood = new Set();
+ var blockedSquares = ["190", "191", "192", "193", "194"];
+ var snakeHead = "190";
+ var snakeLength = "5";
+ var snakeAss = parseInt(snakeHead) + parseInt(snakeLength);
+ console.log (snakeAss);
 
  for (let i = 0; i < bigGrid; i++) {
   const placeGrid = document.createElement("div");
@@ -10,12 +15,80 @@
     placeGrid.id = (i + 1);  
     bigGridFind.appendChild(placeGrid);
     gridArray.push(placeGrid.id);  
+    placeGrid.textContent = placeGrid.id;
  }
  console.log(gridArray);
 
+ document.getElementById("snakeSet").onclick = goSnake; 
 
+ function goSnake(){
+  document.getElementById("snakeSet").onclick = null
+  console.log("That's step 1"); 
+  document.getElementById("190").style.backgroundColor = "red";
 
+  while (gridFood.size < 8){
+    var foodSquare = Math.floor(Math.random() * 400)
+      if (!gridFood.has(foodSquare) && !blockedSquares.includes(foodSquare)){
+         gridFood.add(foodSquare);
+      }
+  }
 
+  console.log("and Step 2", gridFood);
+ 
+  gridFood.forEach(item => {
+    console.log(item);
+    document.getElementById(gridArray[item]).style.backgroundColor = "green";
+  });
+
+  for (let i = parseInt(snakeHead) + 1; i < snakeAss; i++){
+    console.log(i);
+    document.getElementById(i).style.backgroundColor = "blue";
+  }
+ }
+ 
+ document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp") {
+    console.log("up arrow pressed");
+    snakeDir = "Up";
+  } else if (e.key === "ArrowDown") {
+    snakeDir = "Down";
+    console.log("down arrow pressed");
+  } else if (e.key === "ArrowLeft") {
+  snakeDir = "Left";
+  console.log("left arrow pressed");
+} else if (e.key === "ArrowRight") {
+  snakeDir = "Right";
+  console.log("right arrow pressed");
+}
+
+if (snakeDir === "Up"){
+  console.log("UP, UP and Away");
+  document.getElementById(parseInt(snakeHead) - 20).style.backgroundColor = "red";
+  document.getElementById(parseInt(snakeHead)).style.backgroundColor = "blue";
+  document.getElementById(parseInt(snakeAss)).style.backgroundColor = "";
+  snakeHead = snakeHead - 20;
+  snakeAss = snakeAss - 1;
+}
+if (snakeDir === "Left"){
+  console.log("I LEFT my heart in....");
+  document.getElementById(parseInt(snakeHead) - 1).style.backgroundColor = "red";
+  document.getElementById(parseInt(snakeHead)).style.backgroundColor = "blue";
+  document.getElementById(parseInt(snakeAss)).style.backgroundColor = "";
+  snakeHead = snakeHead - 1;
+  snakeAss = snakeAss - 1;
+}
+if (snakeDir === "Right"){
+  console.log("Get RIGHT to the point");
+}
+if (snakeDir === "Down"){
+  console.log("All DOWNhill from here");
+  document.getElementById(parseInt(snakeHead) + 20).style.backgroundColor = "red";
+  document.getElementById(parseInt(snakeHead)).style.backgroundColor = "blue";
+  document.getElementById(parseInt(snakeAss)).style.backgroundColor = "";
+  snakeHead = snakeHead + 20;
+  snakeAss = snakeAss - 1;
+}
+});
 
 /*
 
