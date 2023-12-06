@@ -19,6 +19,14 @@ h2 {
     padding-left: 15%;
 }
 
+#makeGridHere {
+    float: left;
+    width: 33px;
+}
+
 .mineSquare {
     float: left;
+    border: 1px solid;
+    width: 40px;
+    height: 40px;
 }
