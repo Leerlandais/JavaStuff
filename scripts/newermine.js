@@ -1,4 +1,9 @@
+
+
 var diff = "";
+var bombCount = 0;
+var hasBomb = new Set();
+var bombPos = [];
 
 document.getElementById("diff1").onclick = gameEasy;
 document.getElementById("diff2").onclick = gameMid;
@@ -34,9 +39,21 @@ function makeMine() {
         const placeGrid = document.createElement("div");
           placeGrid.classList.add("mineSquare");
           placeGrid.id = (i + 1); 
-          placeGrid.textContent = i;
+          placeGrid.textContent = i + 1;
           gridMaker.appendChild(placeGrid);
     }
+    bombCount = Math.sqrt(parseInt(diff));
+    while (hasBomb.size < bombCount){
+      const bombHere = Math.floor(Math.random() * diff);
+      if (!hasBomb.has(bombHere)){
+      hasBomb.add(bombHere);
+    }
+   }
+    bombPos = Array.from(hasBomb);
+    console.log(hasBomb, bombCount);
+   for (i = 0; i < bombCount; i++){
+        document.getElementById(bombPos[i]).style.backgroundColor = "red";
+   }
 }
 /* adjust this so that it creates an 8*8 grid, 10*10 or 12*12
 
