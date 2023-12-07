@@ -43,7 +43,7 @@ function makeMine() {
         const gridMaker = document.getElementById("makeGridHere"); 
         const placeGrid = document.createElement("div");
           placeGrid.classList.add("mineSquare");
-          placeGrid.id = (i + 1); 
+          placeGrid.id = (i); 
     //      placeGrid.textContent = i + 1;
           gridMaker.appendChild(placeGrid);
     }
@@ -86,7 +86,7 @@ function makeMine() {
         }
         console.log("bombHint : ", bombHint, bombHintArray);
    
-    for (i = 1; i < (bombHint.length); i++){
+    for (i = 0; i < (bombHint.length); i++){
         if (document.getElementById(i) != null){
             document.getElementById(i).textContent = bombHint[i];
         }else {
