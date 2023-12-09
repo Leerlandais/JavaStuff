@@ -1,34 +1,55 @@
-body {
+body{
     background-color: #f4d292;
 }
-
-h1 {
+h1{
     text-align: center;
-    font-family: cursive;
-    text-decoration: underline;
+    margin: 0 auto;
+    margin-bottom: 100px;
 }
+#gallows{
+    width: 336px;
+    margin:  auto;
 
-#gallows {
-    margin: 3vw 34vw 0 34vw;
-    width: 33vw;
 }
-
-.hangGallows {
+.hangDiv{
     float: left;
-    width: 5vw;
-    height: 4vw;
+    display: inline;
+    height: 40px;
+    width: 40px;
     text-align: center;
-    font-size: 3em;
+    font-size: 2em;
+
 }
 
 #hangStart{
-    margin:  auto;
-    padding: 10px;
-    display: block;
+    clear: both;
+    text-align: center;
+    margin: 0 auto;
+    height: 50px;
+    margin-left: 130px;
 }
 
 #hangDisplay{
-    clear: left;
-    margin: 20 auto;
+    clear: both;
     text-align: center;
+    margin: 0 auto;
+    font-size: 21px;
+}
+
+.brownHang{
+    background-color: saddlebrown;
+}
+
+#specHang{
+    width: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.thinHang{
+    height: 25px;
+}
+
+#hangReload{
+    color: aqua;
 }

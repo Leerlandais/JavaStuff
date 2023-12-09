@@ -202,9 +202,12 @@ function makeMine() {
     if (foundBomb === bombCount){
         document.getElementById("mineOver").innerHTML = "You WIN!!! Click <span id='MineReload'>here</span> to play again";
         document.getElementById("MineReload").addEventListener("click", GameReload);
+        setTimeout(() => {
         notHere.forEach((value) => {
             document.getElementById(value).style.backgroundColor = "green";
+            document.getElementById(value).textContent = "";
         });
+    }, 500);
         console.log("You Win")
     }
       });
