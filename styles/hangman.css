@@ -9,13 +9,26 @@ h1 {
 }
 
 #gallows {
-    margin: 10vw 36vw 0;
-    max-width: 30vw;
+    margin: 3vw 34vw 0 34vw;
+    width: 33vw;
 }
 
 .hangGallows {
     float: left;
     width: 5vw;
-    height: 5vw;
-    border: 1px solid;
+    height: 4vw;
+    text-align: center;
+    font-size: 3em;
+}
+
+#hangStart{
+    margin:  auto;
+    padding: 10px;
+    display: block;
+}
+
+#hangDisplay{
+    clear: left;
+    margin: 20 auto;
+    text-align: center;
 }
