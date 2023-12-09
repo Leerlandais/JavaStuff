@@ -3,6 +3,7 @@ var possibleWordList = ["freedom", "capture", "weather", "channel", "conduct", "
 var findThisWord = "";
 var previousGuesses = [];
 var livesLeft = 6;
+var hintToDisplay = "";
 
 
 var headDiv = document.getElementById("headHang");
@@ -24,7 +25,6 @@ function startHang(){
 }
 
 function displayWordClue (word) {
-    let hintToDisplay = "";
     for (let i = 0; i < word.length; i++) {
         hintToDisplay += "_ ";
     }
@@ -105,5 +105,20 @@ function hangRestart() {
 }
 
 function addLatestGuess() {
-    console.log("got one");
+    console.log("got this far", hintToDisplay);
+
+    /*         ALL THIS IS BROKEN
+    let lastGuess = "";
+    for (let i = 0; i < hintToDisplay.length; i++){
+    console.log("do stuff with this : ", hintToDisplay[i]);
+    if (hintToDisplay[i] === ""){
+        lastGuess += " ";
+    }else if (hintToDisplay[i] === findThisWord[i]){
+        lastGuess += findThisWord[i];
+    }else {
+        lastGuess += "S";
+    }
+}
+displayWordClue(lastGuess);
+*/
 }
