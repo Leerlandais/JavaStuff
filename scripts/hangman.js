@@ -3,13 +3,14 @@ var possibleWordList = ["freedom", "capture", "weather", "channel", "conduct", "
 var findThisWord = "";
 var previousGuesses = [];
 var livesLeft = 6;
-var hintToDisplay = "";
-
+var hintToDisplay = [];
+var lastGuess = "";
 
 var headDiv = document.getElementById("headHang");
 var bodyDiv = document.getElementById("bodyHang");
 var legsDiv = document.getElementById("legsHang");
-var hangDisp = document.getElementById("hangDisplay");
+var hintDisp = document.getElementById("hintDisplay");
+var guessDisp = document.getElementById("guessDisplay");
 
 document.getElementById("hangStart").onclick = startHang;
 
@@ -21,26 +22,30 @@ function startHang(){
         let randPick = Math.floor(Math.random() * possibleWordList.length)
         findThisWord = possibleWordList[randPick];
         console.log(findThisWord, " is the word to find");
-        displayWordClue(findThisWord);
+        displayFirstClue(findThisWord);
 }
 
-function displayWordClue (word) {
-    for (let i = 0; i < word.length; i++) {
-        hintToDisplay += "_ ";
+function displayFirstClue (wordToFind) {
+    var showThisHint = [];
+    for (let i = 0; i < wordToFind.length; i++) {
+        showThisHint.push("_");
     }
-    hangDisp.textContent = hintToDisplay;
+    hintDisp.textContent = showThisHint.join(" ");
+    hintToDisplay = showThisHint;
     setTimeout(() => {
     askForLetter();
 }, 1000);
 }
 
-function askForLetter () {
-    var yourGuess = prompt("Guess the word or a letter");
-    if (allowedLetters.includes(yourGuess) && !previousGuesses.includes(yourGuess)){
+function askForLetter() {
+    console.log("So far, so good");
+    var userGuess = prompt("Guess a letter");
+    if (allowedLetters.includes(userGuess) && !previousGuesses.includes(userGuess)){
         console.log("that works");
-        previousGuesses += yourGuess;
+        previousGuesses.push(userGuess);
         console.log ("prevGuesses ", previousGuesses);
-        testLetter (yourGuess);
+        guessDisp.textContent = "You've guessed : " + previousGuesses.join(" ");
+        testLetter (userGuess);
     }else{
         console.log("not an allowed letter");
         askForLetter();
@@ -52,12 +57,38 @@ function testLetter (guess) {
     if (!findThisWord.includes(guess)) {
         livesLeft--;
         console.log("that hurt ", livesLeft);
-        hangDisp.textContent = "You guessed : " + previousGuesses;
         setTimeout(() => {
         dieAnotherBit();
     }, 250);
     }else {
-        addLatestGuess();
+        console.log ("move along, nothing to see here");
+        addLetterToHint (guess);
+    }
+}
+
+function addLetterToHint (letterToAdd) {
+    for (let i = 0; i < findThisWord.length; i++) {
+        if (hintToDisplay[i] != "_") {
+            continue;
+        }
+        else if (findThisWord[i] === letterToAdd) {
+            console.log ("good for : ", i);
+            hintToDisplay[i] = letterToAdd;
+        }
+    }
+    hintDisp.textContent = hintToDisplay.join (" ");
+    console.log(hintToDisplay)
+    testForWin(hintToDisplay);
+}
+
+function testForWin(wordToCheck) {
+    if (!wordToCheck.includes("_") && wordToCheck.join("") === findThisWord) {
+        console.log("you win")
+        youWin();
+    }else {
+        setTimeout(() => {
+        askForLetter();
+    }, 1000);
     }
 }
 
@@ -95,30 +126,22 @@ function dieAnotherBit() {
 function youDied() {
     legsDiv.textContent = "/\\";
     headDiv.style.color = "violet";
-    hangDisp.innerHTML = "You DIED!!! Click <span id='hangReload'>here</span> to play again. You guessed : " + previousGuesses + ".";
+    hintDisp.innerHTML = "You DIED!!! Click <span id='hangReload'>here</span> to play again. The word you needed was <span id='hangReload'> " + findThisWord + "</span>";
 
     document.getElementById("hangReload").addEventListener("click", hangRestart)
+}
+
+function youWin() {
+    headDiv.textContent = "";
+    bodyDiv.textContent = "";
+    document.getElementById("legsFree").textContent = "/\\";
+    document.getElementById("bodyFree").textContent = "/|\\";
+    legsDiv.textContent = "O";
+    hintDisp.innerHTML = "You WIN!!! Click <span id='hangReload'>here</span> to play again.";
+    guessDisp.textContent = "You've guessed : " + findThisWord;
 }
 
 function hangRestart() {
     location.reload();
 }
 
-function addLatestGuess() {
-    console.log("got this far", hintToDisplay);
-
-    /*         ALL THIS IS BROKEN
-    let lastGuess = "";
-    for (let i = 0; i < hintToDisplay.length; i++){
-    console.log("do stuff with this : ", hintToDisplay[i]);
-    if (hintToDisplay[i] === ""){
-        lastGuess += " ";
-    }else if (hintToDisplay[i] === findThisWord[i]){
-        lastGuess += findThisWord[i];
-    }else {
-        lastGuess += "S";
-    }
-}
-displayWordClue(lastGuess);
-*/
-}
