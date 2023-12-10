@@ -127,7 +127,6 @@ function youDied() {
     legsDiv.textContent = "/\\";
     headDiv.style.color = "violet";
     hintDisp.innerHTML = "You DIED!!! Click <span id='hangReload'>here</span> to play again. The word you needed was <span id='hangReload'> " + findThisWord + "</span>";
-
     document.getElementById("hangReload").addEventListener("click", hangRestart)
 }
 
@@ -139,6 +138,7 @@ function youWin() {
     legsDiv.textContent = "O";
     hintDisp.innerHTML = "You WIN!!! Click <span id='hangReload'>here</span> to play again.";
     guessDisp.textContent = "You've guessed : " + findThisWord;
+    document.getElementById("hangReload").addEventListener("click", hangRestart)
 }
 
 function hangRestart() {
