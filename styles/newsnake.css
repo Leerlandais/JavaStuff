@@ -1,0 +1,47 @@
+footer {
+    position: sticky;
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+    bottom: 0;
+}
+
+#copyright{                 
+    transition: transform 50s ease-in-out;
+}
+
+#copyright:hover {
+    transform: rotateY(-36000deg);
+   
+}
+
+body {
+    background-color: #f4d292;
+}
+
+h1 {
+    text-align: center;
+    font-family: cursive;
+    text-decoration: underline;
+}
+
+#snakeSet {
+    margin: 0 auto;
+    width: 38%;
+    border: 2px solid;
+}
+
+.snakeGrid {
+    float: left;
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+}
+
+#snakeStart {
+    margin-left: 45%;
+    clear: left;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
