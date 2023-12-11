@@ -19,7 +19,7 @@ for (let i = 0; i < bigGrid; i++) {
     placeDivs.id = (i);
     bigGridFind.appendChild(placeDivs);
     snakeGridArray.push(placeDivs.id)
- //   placeDivs.textContent = placeDivs.id;
+    placeDivs.textContent = placeDivs.id;
 }
 deadRim.forEach(item => {
     document.getElementById(snakeGridArray[item]).style.backgroundColor = "red";

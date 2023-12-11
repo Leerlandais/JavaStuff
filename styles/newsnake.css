@@ -27,8 +27,8 @@ h1 {
 
 #snakeSet {
     margin: 0 auto;
-  /*  width: 38%;   width for school */
-    width: 28%;  /* width for home  */
+   width: 725px;  
+ /*   width: 28%;  /* width for home  */
     border: 2px solid;
 }
 
