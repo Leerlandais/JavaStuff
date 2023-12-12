@@ -1,0 +1,51 @@
+footer{
+    position: sticky;
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+    bottom: 0;
+}
+
+#copyright{                 
+    transition: transform 50s ease-in-out;
+}
+
+#copyright:hover{
+    transform: rotateY(-36000deg);   
+}
+
+body{
+    background-color: #f4d292;
+    font-family: cursive;
+    font-size: 24px;
+}
+
+h1{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 42px;
+}
+
+.dungDiv{
+    float: left;
+    width: 40px;
+    height: 40px;
+    border: 1px solid;
+}
+
+a {
+    float: left;;
+}
+
+button{
+    clear: left;
+    bottom: 0 auto;
+    margin-left: 20%;
+    width: 100px;
+    height: 30px;
+}
+
+.visible {
+    color: cadetblue;
+    cursor: pointer;
+}

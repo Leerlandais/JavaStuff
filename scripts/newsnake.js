@@ -19,7 +19,7 @@ for (let i = 0; i < bigGrid; i++) {                                     // now t
     placeDivs.classList.add("snakeGrid");                               // adds class to each
     placeDivs.id = (i);                                                 // and an indiviual id
     bigGridFind.appendChild(placeDivs);                                 // puts the divs in place
-    snakeGridArray.push(placeDivs.id)                                   // adds the div ids to the grid Array
+    snakeGridArray.push(placeDivs.id);                                  // adds the div ids to the grid Array
 //   placeDivs.textContent = placeDivs.id;
 }
 deadRim.forEach(item => {                                               // colours the outer rim red
