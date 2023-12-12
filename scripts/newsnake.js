@@ -25,23 +25,23 @@ for (let i = 0; i < bigGrid; i++) {                                     // now t
 deadRim.forEach(item => {                                               // colours the outer rim red
     document.getElementById(snakeGridArray[item]).style.backgroundColor = "red";
 })
-console.log(snakeGridArray);
+// console.log(snakeGridArray);
 
 startBut.addEventListener("click", makeFood(12));                           // waits for start to be pressed
 
 document.addEventListener("keydown", (e) => {                           // Listens for arrow button presses and sends relevant direction to move snake function
     if (e.key === "ArrowUp") {
-        console.log("up arrow pressed");
+        // console.log("up arrow pressed");
         moveSnake("sUp");
     } else if (e.key === "ArrowDown") {
         moveSnake("sDown");
-        console.log("down arrow pressed");
+        // console.log("down arrow pressed");
     } else if (e.key === "ArrowLeft") {
         moveSnake("sLeft");
-        console.log("left arrow pressed");
+        // console.log("left arrow pressed");
     } else if (e.key === "ArrowRight") {
         moveSnake("sRight");
-        console.log("right arrow pressed");
+        // console.log("right arrow pressed");
     }
 });
 
@@ -55,12 +55,12 @@ function makeFood(amount) {                                                   //
         gridFood.forEach(item => {
         document.getElementById(snakeGridArray[item]).style.backgroundColor = "green";                          // and colours the squares
       });
-      console.log("Food Placed", gridFood);
+      // console.log("Food Placed", gridFood);
       makeSnake;
 }
 
 function makeSnake() {
-    console.log(snakeHead);
+    // console.log(snakeHead);
     snakeCollide = snakePos.slice(1);                                                                           // copies the current snake position (minus the head) to the collide array
     if (deadRim.includes(snakeHead) || snakeCollide.includes(snakeHead)) {                                      // checks if the snake's head has reached the outer rim or collided with its body
         confirm("You died. You grew your snake to " + snakePos.length);                                         // You're dead. Also shows snake's length
@@ -68,15 +68,15 @@ function makeSnake() {
     }
      newSnakePos = [];                                                                                          // makes sure this is empty
     //  startBut.disabled = true;
-    console.log ("here we are : ", snakePos);
+    // console.log ("here we are : ", snakePos);
     for (let i = 1; i < snakePos.length; i++) {
         document.getElementById(snakePos[i]).style.backgroundColor = "blue";                                    // colours the snake
     }   document.getElementById(snakePos[0]).style.backgroundColor = "yellow";
     if (gridFood.has(snakePos[0])) {                                                                            // checks if the snake is eating. When I made this part, I hadn't yet made a var for snakeHead
         gridFood.delete(snakePos[0]);                                                                           // removes the food once eaten 
-        console.log ("He ate!");
+        // console.log ("He ate!");
         snakePos.push(snakePos[snakePos.length-1] - snakeDir);                                                  // adds a new square to the end of snake's position depending on snake's current direction
-        console.log("dir : ", snakeDir, "pos : ", snakePos);
+        // console.log("dir : ", snakeDir, "pos : ", snakePos);
     }
     if (gridFood.size < 2){
         makeFood(6);                                                                                            // late addition. Adds more food to keep the game going
@@ -89,7 +89,7 @@ function moveSnake(dir) {
     clearInterval(intervalId);                                                                                  // stops repetition of previous direction (if any)
     if (dir === "sUp") {
         intervalId = setInterval(() => {                                                                        // starts the interval repetition
-        console.log("let's move up");
+        // console.log("let's move up");
         newSnakePos[0] = (snakePos[0]) - 22;                                                                    // moves the snakes head position to the square immediately above
         snakeDir = - 22;                                                                                        // stores the current direction
         document.getElementById(snakePos[snakePos.length-1]).style.backgroundColor = "";                        // deletes the last square of the snake
@@ -98,14 +98,14 @@ function moveSnake(dir) {
                newSnakePos.push(snakePos[i]);                                                                   // and makes the updated position of the snake
                }
                snakePos = newSnakePos;
-               console.log ("new position : ", snakePos);
+               // console.log ("new position : ", snakePos);
                snakeHead = snakePos[0];                                                                         // stored for collision detection
                 makeSnake();                                                                                    // jump back to here to colour the new snake
             }, 100);                                                                                            // and repeat 10 times per second
             }else if (dir === "sDown") {
                 intervalId = setInterval(() => {
     
-                console.log("let's move down");
+                // console.log("let's move down");
         newSnakePos[0] = (snakePos[0]) + 22;                                                                    // same as line 90 but moves to the square immediately below
         snakeDir = + 22;
         document.getElementById(snakePos[snakePos.length-1]).style.backgroundColor = "";
@@ -114,13 +114,13 @@ function moveSnake(dir) {
             newSnakePos.push(snakePos[i]);
         }
         snakePos = newSnakePos;
-        console.log ("new position : ", snakePos);
+        // console.log ("new position : ", snakePos);
         snakeHead = snakePos[0];
         makeSnake();
     }, 100);
     }else if (dir === "sLeft") {
         intervalId = setInterval(() => {
-        console.log("let's move left");
+        // console.log("let's move left");
         newSnakePos[0] = (snakePos[0]) - 1;                                                                      // line 90 again but this time to the left
         snakeDir = - 1;
         document.getElementById(snakePos[snakePos.length-1]).style.backgroundColor = "";
@@ -129,13 +129,13 @@ function moveSnake(dir) {
             newSnakePos.push(snakePos[i]);
         }
         snakePos = newSnakePos;
-        console.log ("new position : ", snakePos);
+        // console.log ("new position : ", snakePos);
         snakeHead = snakePos[0];
         makeSnake();  
     }, 100);      
     }else if (dir === "sRight") {
         intervalId = setInterval(() => {
-        console.log("let's move right");
+        // console.log("let's move right");
         newSnakePos[0] = (snakePos[0]) + 1;                                                                       // and, of course, to the right
         snakeDir = + 1;
         document.getElementById(snakePos[snakePos.length-1]).style.backgroundColor = "";
@@ -144,7 +144,7 @@ function moveSnake(dir) {
             newSnakePos.push(snakePos[i]);
         }
         snakePos = newSnakePos;
-        console.log ("new position : ", snakePos);
+        // console.log ("new position : ", snakePos);
         snakeHead = snakePos[0];
         makeSnake();
     }, 100);
