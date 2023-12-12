@@ -69,9 +69,9 @@ function makeSnake() {
      newSnakePos = [];                                                                                          // makes sure this is empty
     //  startBut.disabled = true;
     console.log ("here we are : ", snakePos);
-    for (let i = 0; i < snakePos.length; i++) {
+    for (let i = 1; i < snakePos.length; i++) {
         document.getElementById(snakePos[i]).style.backgroundColor = "blue";                                    // colours the snake
-    }
+    }   document.getElementById(snakePos[0]).style.backgroundColor = "yellow";
     if (gridFood.has(snakePos[0])) {                                                                            // checks if the snake is eating. When I made this part, I hadn't yet made a var for snakeHead
         gridFood.delete(snakePos[0]);                                                                           // removes the food once eaten 
         console.log ("He ate!");
@@ -79,7 +79,7 @@ function makeSnake() {
         console.log("dir : ", snakeDir, "pos : ", snakePos);
     }
     if (gridFood.size < 2){
-        makeFood(6);
+        makeFood(6);                                                                                            // late addition. Adds more food to keep the game going
     }
     
 }

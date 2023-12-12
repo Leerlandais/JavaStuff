@@ -40,9 +40,9 @@ h1 {
 }
 
 #snakeStart {
-    margin-left: 45%;
+    margin: 0 auto;
     clear: left;
-    width: 100px;
+    
     height: 30px;
     text-align: center;
 }
