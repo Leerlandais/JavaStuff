@@ -27,7 +27,7 @@ deadRim.forEach(item => {                                               // colou
 })
 console.log(snakeGridArray);
 
-startBut.addEventListener("click", makeFood);                           // waits for start to be pressed
+startBut.addEventListener("click", makeFood(12));                           // waits for start to be pressed
 
 document.addEventListener("keydown", (e) => {                           // Listens for arrow button presses and sends relevant direction to move snake function
     if (e.key === "ArrowUp") {
@@ -45,8 +45,8 @@ document.addEventListener("keydown", (e) => {                           // Liste
     }
 });
 
-function makeFood() {                                                   // time to place some food
-    while (gridFood.size < 18){                                         // adjust this to change how much to place
+function makeFood(amount) {                                                   // time to place some food
+    while (gridFood.size < amount){                                         // adjust this to change how much to place
         var foodSquare = Math.floor(Math.random() * 396)
           if (!gridFood.has(foodSquare) && !snakePos.includes(foodSquare) && !deadRim.includes(foodSquare)){    // makes sure the random selection is unique, isn't where the snake is and isn't in the outer rim
              gridFood.add(foodSquare);                                                                          // adds it all to the array
@@ -77,6 +77,9 @@ function makeSnake() {
         console.log ("He ate!");
         snakePos.push(snakePos[snakePos.length-1] - snakeDir);                                                  // adds a new square to the end of snake's position depending on snake's current direction
         console.log("dir : ", snakeDir, "pos : ", snakePos);
+    }
+    if (gridFood.size < 2){
+        makeFood(6);
     }
     
 }
