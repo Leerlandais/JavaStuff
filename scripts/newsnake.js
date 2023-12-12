@@ -62,7 +62,7 @@ function makeSnake() {
     console.log(snakeHead);
     snakeCollide = snakePos.slice(1);
     if (deadRim.includes(snakeHead) || snakeCollide.includes(snakeHead)) {
-        confirm("You died");
+        confirm("You died. You grew your snake to " + snakePos.length);
         location.reload();
     }
      newSnakePos = [];
@@ -80,8 +80,11 @@ function makeSnake() {
     
 }
 
+var intervalId = null;
 function moveSnake(dir) {
+    clearInterval(intervalId);
     if (dir === "sUp") {
+        intervalId = setInterval(() => {
         console.log("let's move up");
         newSnakePos[0] = (snakePos[0]) - 22;
         snakeDir = - 22;
@@ -94,45 +97,53 @@ function moveSnake(dir) {
                console.log ("new position : ", snakePos);
                snakeHead = snakePos[0];
                 makeSnake();
-    }else if (dir === "sDown") {
-        console.log("let's move down");
+            }, 250);
+            }else if (dir === "sDown") {
+                intervalId = setInterval(() => {
+    
+                console.log("let's move down");
         newSnakePos[0] = (snakePos[0]) + 22;
         snakeDir = + 22;
         document.getElementById(snakePos[snakePos.length-1]).style.backgroundColor = "";
-           for (let i = 0; i < snakePos.length - 1; i++) {
-               document.getElementById(snakePos[i]).style.backgroundColor = "";
-               newSnakePos.push(snakePos[i]);
-               }
-               snakePos = newSnakePos;
-               console.log ("new position : ", snakePos);
-               snakeHead = snakePos[0];
-                makeSnake();
+        for (let i = 0; i < snakePos.length - 1; i++) {
+            document.getElementById(snakePos[i]).style.backgroundColor = "";
+            newSnakePos.push(snakePos[i]);
+        }
+        snakePos = newSnakePos;
+        console.log ("new position : ", snakePos);
+        snakeHead = snakePos[0];
+        makeSnake();
+    }, 250);
     }else if (dir === "sLeft") {
+        intervalId = setInterval(() => {
         console.log("let's move left");
-         newSnakePos[0] = (snakePos[0]) - 1;
-         snakeDir = - 1;
-         document.getElementById(snakePos[snakePos.length-1]).style.backgroundColor = "";
-            for (let i = 0; i < snakePos.length - 1; i++) {
-                document.getElementById(snakePos[i]).style.backgroundColor = "";
-                newSnakePos.push(snakePos[i]);
-                }
-                snakePos = newSnakePos;
-                console.log ("new position : ", snakePos);
-                snakeHead = snakePos[0];
-                 makeSnake();        
+        newSnakePos[0] = (snakePos[0]) - 1;
+        snakeDir = - 1;
+        document.getElementById(snakePos[snakePos.length-1]).style.backgroundColor = "";
+        for (let i = 0; i < snakePos.length - 1; i++) {
+            document.getElementById(snakePos[i]).style.backgroundColor = "";
+            newSnakePos.push(snakePos[i]);
+        }
+        snakePos = newSnakePos;
+        console.log ("new position : ", snakePos);
+        snakeHead = snakePos[0];
+        makeSnake();  
+    }, 250);      
     }else if (dir === "sRight") {
+        intervalId = setInterval(() => {
         console.log("let's move right");
         newSnakePos[0] = (snakePos[0]) + 1;
         snakeDir = + 1;
         document.getElementById(snakePos[snakePos.length-1]).style.backgroundColor = "";
-           for (let i = 0; i < snakePos.length - 1; i++) {
-               document.getElementById(snakePos[i]).style.backgroundColor = "";
-               newSnakePos.push(snakePos[i]);
-               }
-               snakePos = newSnakePos;
-               console.log ("new position : ", snakePos);
-               snakeHead = snakePos[0];
-                makeSnake();
+        for (let i = 0; i < snakePos.length - 1; i++) {
+            document.getElementById(snakePos[i]).style.backgroundColor = "";
+            newSnakePos.push(snakePos[i]);
+        }
+        snakePos = newSnakePos;
+        console.log ("new position : ", snakePos);
+        snakeHead = snakePos[0];
+        makeSnake();
+    }, 250);
     }
 }
 
