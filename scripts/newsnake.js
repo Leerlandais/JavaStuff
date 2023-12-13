@@ -55,7 +55,7 @@ function makeFood(amount) {                                                   //
           }
       }
         gridFood.forEach(item => {
-   //     document.getElementById(snakeGridArray[item]).style.backgroundColor = "green";                          // and colours the squares
+        document.getElementById(snakeGridArray[item]).style.backgroundColor = "green";                          // and colours the squares
       });
       // console.log("Food Placed", gridFood);
       makeSnake;
