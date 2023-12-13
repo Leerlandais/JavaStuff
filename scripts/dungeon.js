@@ -6,8 +6,15 @@ const showHP = document.getElementById("showHP");
 const showArmour = document.getElementById("showArmour");
 const showDodge = document.getElementById("showDodge");
 const showAcc = document.getElementById("showAcc");
+const showEvent = document.getElementById("showEvent");
 var dungArray = [];
 var playerClass = "";
+var playerHP = "";
+var playerArm = "";
+var playerDodge = "";
+var playerAcc = "";
+var playerDam = "";
+var currSpot = -1;
 
 for (let i = 0; i < dungSize; i++) {        
     const placeDivs = document.createElement("div");  
@@ -40,13 +47,86 @@ function playerPicksClass() {
             console.log("did you click?");
         }        
 });
+}
 function rollPlayer(classPicked) {
     let rolls = []; 
     for (i = 0; i < 4; i++) {
-        rolls.push(Math.floor(Math.random() * 61) + 40);
+        rolls.push(Math.floor(Math.random() * 61) + 20);
     }
-    console.log(rolls);
+        playerHP = rolls[0];
+        playerArm = rolls[1];
+        playerDodge = rolls[2];
+        playerAcc = rolls[3];
+
+    if (playerClass === "barbar") {
+        playerHP = playerHP + 30;
+        playerArm = playerArm - 20;
+        playerAcc = playerAcc + 20;
+        playerDam = 15;
+        console.log ("adjusted for Barbarian");
+    }else if (playerClass === "ranger") {
+        playerDam = 5;
+        console.log ("no adjust for Rangers");
+    }else if (playerClass === "warrior") {
+        playerArm = playerArm + 20;
+        playerAcc = playerAcc +10;
+        playerHP = playerHP +10;
+        playerDam = 10;
+        console.log("adjusted for Warrior");
+    }else if (playerClass === "thief") {
+        playerDodge = playerDodge + 25;
+        playerAcc = playerAcc + 25;
+        playerHP = playerHP - 15;
+        playerArm = playerArm - 15;
+        playerDam = -5;
+        console.log("adjusted for Thief");
+    }else {
+        console.log("something went wrong");
+    }
+
+        showClass.textContent = "Class : " + playerClass;
+        showHP.textContent = "HP : " + playerHP;
+        showArmour.textContent = "Armour : " + playerArm;
+        showDodge.textContent = "Dodge : " + playerDodge;
+        showAcc.textContent = "Accuracy : " + playerAcc;
+        runGame();
 }
+
+function runGame() {
+    document.addEventListener("keydown", (e) => {
+       if (e.key === "ArrowRight") {
+            console.log("Arrow Pressed");
+            currSpot = currSpot + 1;
+            console.log(currSpot);
+            document.getElementById("dung" + currSpot).style.backgroundColor = "blue";
+       }
+       if (currSpot === 19){
+        showEvent.textContent = "You WIN";
+        showEvent.style.color = "red";
+            }else {
+                var eventChoice = 0;
+                eventChoice = Math.floor((Math.random()) * 4) + 1;
+                console.log("event ", eventChoice);
+                runEvent(eventChoice);
+            }    
+    });
+
+}
+
+function runEvent(evPick) {
+    if (evPick === 1) {
+        showEvent.textContent = "Fight a monster";
+    }else if (evPick === 2) {
+        showEvent.textContent = "Safe Spot, you rest a little and regain some HP";
+        playerHP = playerHP + 10;
+        showHP.textContent = "HP : " + playerHP;
+    }else if (evPick === 3) {
+        showEvent.textContent = "Ambush!";
+    }else if (evPick === 4) {
+        showEvent.textContent = "A treasure chest! Dare you open it?"
+    }else {
+        showEvent.textContent = "Hmmm, something went wrong";
+    }
 }
 
 /* Things to do :-
