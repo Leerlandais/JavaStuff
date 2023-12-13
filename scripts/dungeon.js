@@ -58,22 +58,22 @@ function rollPlayer(classPicked) {
         playerDodge = rolls[2];
         playerAcc = rolls[3];
 
-    if (playerClass === "barbar") {
+    if (classPicked === "barbar") {
         playerHP = playerHP + 30;
         playerArm = playerArm - 20;
         playerAcc = playerAcc + 20;
         playerDam = 15;
         console.log ("adjusted for Barbarian");
-    }else if (playerClass === "ranger") {
+    }else if (classPicked === "ranger") {
         playerDam = 5;
         console.log ("no adjust for Rangers");
-    }else if (playerClass === "warrior") {
+    }else if (classPicked === "warrior") {
         playerArm = playerArm + 20;
         playerAcc = playerAcc +10;
         playerHP = playerHP +10;
         playerDam = 10;
         console.log("adjusted for Warrior");
-    }else if (playerClass === "thief") {
+    }else if (classPicked === "thief") {
         playerDodge = playerDodge + 25;
         playerAcc = playerAcc + 25;
         playerHP = playerHP - 15;
@@ -84,7 +84,7 @@ function rollPlayer(classPicked) {
         console.log("something went wrong");
     }
 
-        showClass.textContent = "Class : " + playerClass;
+        showClass.textContent = "Class : " + classPicked;
         showHP.textContent = "HP : " + playerHP;
         showArmour.textContent = "Armour : " + playerArm;
         showDodge.textContent = "Dodge : " + playerDodge;
@@ -116,19 +116,37 @@ function runGame() {
 
 function runEvent(evPick) {
     if (evPick === 1) {
-        showEvent.textContent = "Fight a monster";
+        showEvent.textContent = "Fight a monster. Ouch, that stung";
+        playerHP = playerHP - 15;
+        showHP.textContent = "HP : " + playerHP;
+            if (playerHP < 1) {
+                showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
+                document.getElementById("restartGame").addEventListener("click", function() {
+                    location.reload()
+                });
+            }
     }else if (evPick === 2) {
         showEvent.textContent = "Safe Spot, you rest a little and regain some HP";
-        playerHP = playerHP + 10;
+        playerHP = playerHP + 15;
         showHP.textContent = "HP : " + playerHP;
     }else if (evPick === 3) {
-        showEvent.textContent = "Ambush!";
+        showEvent.textContent = "Ambush! You've been hurt. Badly";
+        playerHP =  playerHP - 40;
+        showHP.textContent = "HP : " + playerHP;
+            if (playerHP < 1) {
+                showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
+                document.getElementById("restartGame").addEventListener("click", function() {
+                    location.reload()
+                });
+            }
     }else if (evPick === 4) {
         showEvent.textContent = "A treasure chest! Dare you open it?"
     }else {
         showEvent.textContent = "Hmmm, something went wrong";
     }
 }
+
+
 
 /* Things to do :-
 - Random generate HP, Armour, Speed, Dodge, Accuracy (crit)
