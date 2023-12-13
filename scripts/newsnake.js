@@ -55,6 +55,7 @@ function makeFood(amount) {                                                   //
         gridFood.forEach(item => {
         document.getElementById(snakeGridArray[item]).style.backgroundColor = "green";                          // and colours the squares
       });
+
       // console.log("Food Placed", gridFood);
       makeSnake;
 }
@@ -86,6 +87,9 @@ function makeSnake() {
 
 var intervalId = null;                                                                                          // var to control which direction will be repeated
 function moveSnake(dir) {
+    deadRim.forEach(item => {
+        document.getElementById(snakeGridArray[item]).style.backgroundColor = "red";
+      });
     clearInterval(intervalId);                                                                                  // stops repetition of previous direction (if any)
     if (dir === "sUp") {
         intervalId = setInterval(() => {                                                                        // starts the interval repetition
