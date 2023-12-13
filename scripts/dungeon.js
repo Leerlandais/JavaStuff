@@ -93,6 +93,7 @@ function rollPlayer(classPicked) {
 }
 
 function runGame() {
+    showEvent.textContent = "Press -> to advance (Don't bother telling me that you can just hold it down, I haven't added 'prevent that' yet :p"
     document.addEventListener("keydown", (e) => {
        if (e.key === "ArrowRight") {
             console.log("Arrow Pressed");
