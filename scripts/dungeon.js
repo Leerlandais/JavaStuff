@@ -59,7 +59,7 @@ function rollPlayer(classPicked) {
         playerAcc = rolls[3];
 
     if (classPicked === "barbar") {
-        playerHP = playerHP + 30;
+        playerHP = playerHP + 50;
         playerArm = playerArm - 20;
         playerAcc = playerAcc + 20;
         playerDam = 15;
@@ -115,49 +115,66 @@ function runGame() {
 }
 
 function runEvent(evPick) {
+    showEvent.style.color = "";
     if (evPick === 1) {
         showEvent.textContent = "Fight a monster. Ouch, that stung";
-        playerHP = playerHP - 15;
-        showHP.textContent = "HP : " + playerHP;
-            if (playerHP < 1) {
-                showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
-                document.getElementById("restartGame").addEventListener("click", function() {
-                    location.reload()
-                });
-            }
+            monsterFight();      
     }else if (evPick === 2) {
         showEvent.textContent = "Safe Spot, you rest a little and regain some HP";
-        playerHP = playerHP + 15;
-        showHP.textContent = "HP : " + playerHP;
+        safeSpot();
     }else if (evPick === 3) {
         showEvent.textContent = "Ambush! You've been hurt. Badly";
-        playerHP =  playerHP - 40;
-        showHP.textContent = "HP : " + playerHP;
-            if (playerHP < 1) {
-                showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
-                document.getElementById("restartGame").addEventListener("click", function() {
-                    location.reload()
-                });
-            }
+        ambushSpot();
     }else if (evPick === 4) {
         showEvent.textContent = "A treasure chest! Dare you open it?"
+        chestEvent();
     }else {
         showEvent.textContent = "Hmmm, something went wrong";
     }
+}
+function monsterFight() {
+    playerHP = playerHP - 15;
+    showHP.textContent = "HP : " + playerHP;
+    if (playerHP < 1) {
+        showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
+        document.getElementById("restartGame").addEventListener("click", function() {
+            location.reload()
+        });
+    }
+}
+function safeSpot() {
+    playerHP = playerHP + 15;
+    showHP.textContent = "HP : " + playerHP;
+}
+function ambushSpot() {
+    playerHP =  playerHP - 40;
+    showHP.textContent = "HP : " + playerHP;
+        if (playerHP < 1) {
+            showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
+            document.getElementById("restartGame").addEventListener("click", function() {
+                location.reload()
+            });
+        }
+}
+function chestEvent() {
+    showEvent.style.color = "green";
 }
 
 
 
 /* Things to do :-
-- Random generate HP, Armour, Speed, Dodge, Accuracy (crit)
-- Make a class list Barbarian (better HP, HP recovery per level), Ranger (gets a free hit, 2 if crit, has increased chance of avoiding ambush), Warrior (weap bonus, better armour), Thief (low HP and armour, excellent dodge/crit chance)
-- set up buttons to pick class
-- set up random event selector for each square
-- create random events, more difficult as time goes on - attacks by enemy, cave (empty, treasure or danger), safe spot, find some way to add options
+- Random generate HP, Armour, Speed, Dodge, Accuracy (crit) - Done
+- Make a class list Barbarian (better HP, HP recovery per level), Ranger (gets a free hit, 2 if crit, has increased chance of avoiding ambush), Warrior (weap bonus, better armour), Thief (low HP and armour, excellent dodge/crit chance)  - Done
+- set up buttons to pick class  - Done
+- set up random event selector for each square  - Done but will get bigger, of course
+- add win condition - Done
+- create random events, more difficult as time goes on - attacks by enemy, cave (empty, treasure or danger), safe spot, find some way to add options  - Doneish
+
+    Stuff to still do :-
+
 - if battle, take ranger shot, do speed roll to see who attacks first. Attack chance vs dodge chance. If good, damage roll vs armour. Damage done vs HP. If dead, end. Else, roll for next attack
 - roll for loot (add dangerous loot etc)
-- add win condition
+- so, very, very much more
 - make everything above better :D
 */
 
-// Cliquez <span id='step9' class='visible'>ici</span> pour voir ce qui se passe
