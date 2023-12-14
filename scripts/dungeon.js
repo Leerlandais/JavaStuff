@@ -159,7 +159,63 @@ function ambushSpot() {
 function chestEvent() {
     showEvent.style.color = "green";
 }
-
+$("#dice-color").val("#000000");
+      $("#dot-color").val("#ffd700");
+      let rnd;
+      let rnd2;
+      let x, y;
+      let w, z;
+      $("#spin").click(function(e) {
+        e.preventDefault();
+        rnd = Math.floor(Math.random() * 6 + 1);
+        switch (rnd) {
+          case 1:
+            x = 720;
+            y = 810;
+            break;
+          case 6:
+            x = 720;
+            y = 990;
+            break;
+          default:
+            x = 720 + (6 - rnd) * 90;
+            y = 900;
+            break;
+        }
+        console.log("1 : ", rnd, x, y);
+        rnd2 = Math.floor(Math.random() * 6 + 1);
+        switch (rnd2) {
+          case 1:
+            w = 720;
+            z = 810;
+            break;
+          case 6:
+            w = 720;
+            z = 990;
+            break;
+          default:
+            w = 720 + (6 - rnd2) * 90;
+            z = 900;
+            break;
+        }
+        console.log("2 : ", rnd2, w, z);
+ $(".dice").css(
+ "transform",
+ "translateZ(-100px) rotateY(" + x + "deg) rotateX(" + y + "deg)"
+  );
+  $(".dice.dice2").css(
+    "transform",
+    "translateZ(-100px) rotateY(" + w + "deg) rotateX(" + z + "deg)"
+     );
+});
+$("#dot-color").change(function() {
+  const dot = $("#dot-color").val();
+  $(".dot").css("background-color", dot);
+});
+$("#dice-color").change(function() {
+  const dice = $("#dice-color").val();
+  $(".side").css("background-color", dice);
+});
 
 
 /* Things to do :-
