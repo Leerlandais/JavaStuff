@@ -16,6 +16,13 @@ var playerAcc = "";
 var playerDam = "";
 var currSpot = -1;
 
+
+/* Things to do.
+Change all arrays to objects holding class, HP etc
+Set up create char rolls for each stat based on results of dice and class chosen
+Create some mosters and stats
+Create events for each square
+*/
 for (let i = 0; i < dungSize; i++) {        
     const placeDivs = document.createElement("div");  
     placeDivs.classList.add("dungDiv");  
@@ -27,11 +34,7 @@ for (let i = 0; i < dungSize; i++) {
 dungStart.addEventListener("click", playerPicksClass);
 
 function playerPicksClass() {
-    /* showClass.textContent = "class : ";
-    showHP.textContent = "HP : ";
-    showArmour.textContent = "Armour : ";
-    showDodge.textContent = "Dodge : ";
-    showAcc.textContent = "Accuracy : ";  */ // This was used to test stuff, will leave it here cos I'll surely need it later
+    showAcc.textContent = "Accuracy : ";  
     dungStart.style.visibility = "hidden";
     showClass.textContent = "Pick Your Class";
     showHP.innerHTML = " <span id='barbar' class='visible'>Barbarian</span> : Huge HP, HP recovery, high Crit, low armour";
@@ -42,123 +45,14 @@ function playerPicksClass() {
         if (event.target.classList.contains("visible")) {
             console.log("Picked : ", event.target.id);
             playerClass = event.target.id;
-            rollPlayer(playerClass);
+            rollForStats(playerClass);
         }else {
             console.log("did you click?");
         }        
 });
 }
-function rollPlayer(classPicked) {
-    let rolls = []; 
-    for (i = 0; i < 4; i++) {
-        rolls.push(Math.floor(Math.random() * 61) + 20);
-    }
-        playerHP = rolls[0];
-        playerArm = rolls[1];
-        playerDodge = rolls[2];
-        playerAcc = rolls[3];
 
-    if (classPicked === "barbar") {
-        playerHP = playerHP + 50;
-        playerArm = playerArm - 20;
-        playerAcc = playerAcc + 20;
-        playerDam = 15;
-        console.log ("adjusted for Barbarian");
-    }else if (classPicked === "ranger") {
-        playerDam = 5;
-        console.log ("no adjust for Rangers");
-    }else if (classPicked === "warrior") {
-        playerArm = playerArm + 20;
-        playerAcc = playerAcc +10;
-        playerHP = playerHP +10;
-        playerDam = 10;
-        console.log("adjusted for Warrior");
-    }else if (classPicked === "thief") {
-        playerDodge = playerDodge + 25;
-        playerAcc = playerAcc + 25;
-        playerHP = playerHP - 15;
-        playerArm = playerArm - 15;
-        playerDam = -5;
-        console.log("adjusted for Thief");
-    }else {
-        console.log("something went wrong");
-    }
 
-        showClass.textContent = "Class : " + classPicked;
-        showHP.textContent = "HP : " + playerHP;
-        showArmour.textContent = "Armour : " + playerArm;
-        showDodge.textContent = "Dodge : " + playerDodge;
-        showAcc.textContent = "Accuracy : " + playerAcc;
-        runGame();
-}
-
-function runGame() {
-    showEvent.textContent = "Press -> to advance (Don't bother telling me that you can just hold it down, I haven't added 'prevent that' yet :p"
-    document.addEventListener("keydown", (e) => {
-       if (e.key === "ArrowRight") {
-            console.log("Arrow Pressed");
-            currSpot = currSpot + 1;
-            console.log(currSpot);
-            document.getElementById("dung" + currSpot).style.backgroundColor = "blue";
-       }
-       if (currSpot === 19){
-        showEvent.textContent = "You WIN";
-        showEvent.style.color = "red";
-            }else {
-                var eventChoice = 0;
-                eventChoice = Math.floor((Math.random()) * 4) + 1;
-                console.log("event ", eventChoice);
-                runEvent(eventChoice);
-            }    
-    });
-
-}
-
-function runEvent(evPick) {
-    showEvent.style.color = "";
-    if (evPick === 1) {
-        showEvent.textContent = "Fight a monster. Ouch, that stung";
-            monsterFight();      
-    }else if (evPick === 2) {
-        showEvent.textContent = "Safe Spot, you rest a little and regain some HP";
-        safeSpot();
-    }else if (evPick === 3) {
-        showEvent.textContent = "Ambush! You've been hurt. Badly";
-        ambushSpot();
-    }else if (evPick === 4) {
-        showEvent.textContent = "A treasure chest! Dare you open it?"
-        chestEvent();
-    }else {
-        showEvent.textContent = "Hmmm, something went wrong";
-    }
-}
-function monsterFight() {
-    playerHP = playerHP - 15;
-    showHP.textContent = "HP : " + playerHP;
-    if (playerHP < 1) {
-        showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
-        document.getElementById("restartGame").addEventListener("click", function() {
-            location.reload()
-        });
-    }
-}
-function safeSpot() {
-    playerHP = playerHP + 15;
-    showHP.textContent = "HP : " + playerHP;
-}
-function ambushSpot() {
-    playerHP =  playerHP - 40;
-    showHP.textContent = "HP : " + playerHP;
-        if (playerHP < 1) {
-            showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
-            document.getElementById("restartGame").addEventListener("click", function() {
-                location.reload()
-            });
-        }
-}
-function chestEvent() {
-    showEvent.style.color = "green";
-}
 $("#dice-color").val("#000000");
       $("#dot-color").val("#ffd700");
       let rnd;
@@ -232,5 +126,172 @@ $("#dice-color").change(function() {
 - roll for loot (add dangerous loot etc)
 - so, very, very much more
 - make everything above better :D
+
+
+
+
+
+function rollPlayer(classPicked) {
+    if (classPicked === "barbar") {
+
+        console.log ("adjusted for Barbarian");
+    }else if (classPicked === "ranger") {
+
+        console.log ("no adjust for Rangers");
+    }else if (classPicked === "warrior") {
+
+        console.log("adjusted for Warrior");
+    }else if (classPicked === "thief") {
+        
+        console.log("adjusted for Thief");
+    }else {                                                                                                                          // new habit: add an "else (error)" once all other possibilities are covered
+        console.log("something went wrong");
+    }
+
+        showClass.textContent = "Class : " + classPicked;
+        showHP.textContent = "HP : " + playerHP;
+        showArmour.textContent = "Armour : " + playerArm;
+        showDodge.textContent = "Dodge : " + playerDodge;
+        showAcc.textContent = "Accuracy : " + playerAcc;
+        runGame();
+}
+
+function runEvent(evPick) {
+    showEvent.style.color = "";
+    if (evPick === 1) {
+        showEvent.textContent = "Fight a monster. Ouch, that stung";
+//            monsterFight();      
+    }else if (evPick === 2) {
+        showEvent.textContent = "Safe Spot, you rest a little and regain some HP";
+//        safeSpot();
+    }else if (evPick === 3) {
+        showEvent.textContent = "Ambush! You've been hurt. Badly";
+//        ambushSpot();
+    }else if (evPick === 4) {
+        showEvent.textContent = "A treasure chest! Dare you open it?"
+//        chestEvent();
+    }else {
+        showEvent.textContent = "Hmmm, something went wrong";
+    }
+}
+
+function runGame() {
+    showEvent.textContent = "Press -> to advance (Don't bother telling me that you can just hold it down, I haven't added 'prevent that' yet :p"
+    document.addEventListener("keydown", (e) => {
+       if (e.key === "ArrowRight") {
+            console.log("Arrow Pressed");
+            currSpot = currSpot + 1;
+            console.log(currSpot);
+            document.getElementById("dung" + currSpot).style.backgroundColor = "blue";
+       }
+       if (currSpot === 19){
+        showEvent.textContent = "You WIN";
+        showEvent.style.color = "red";
+            }else {
+                var eventChoice = 0;
+                eventChoice = Math.floor((Math.random()) * 4) + 1;
+                console.log("event ", eventChoice);
+                runEvent(eventChoice);
+            }    
+    });
+
+}
+
+
+
+
+}
+function rollPlayer(classPicked) {
+    let rolls = []; 
+    for (i = 0; i < 4; i++) {
+        rolls.push(Math.floor(Math.random() * 61) + 20);
+    }
+        playerHP = rolls[0];
+        playerArm = rolls[1];
+        playerDodge = rolls[2];
+        playerAcc = rolls[3];
+
+    if (classPicked === "barbar") {
+        playerHP = playerHP + 50;
+        playerArm = playerArm - 20;
+        playerAcc = playerAcc + 20;
+        playerDam = 15;
+        console.log ("adjusted for Barbarian");
+    }else if (classPicked === "ranger") {
+        playerDam = 5;
+        console.log ("no adjust for Rangers");
+    }else if (classPicked === "warrior") {
+        playerArm = playerArm + 20;
+        playerAcc = playerAcc +10;
+        playerHP = playerHP +10;
+        playerDam = 10;
+        console.log("adjusted for Warrior");
+    }else if (classPicked === "thief") {
+        playerDodge = playerDodge + 25;
+        playerAcc = playerAcc + 25;
+        playerHP = playerHP - 15;
+        playerArm = playerArm - 15;
+        playerDam = -5;
+        console.log("adjusted for Thief");
+    }else {
+        console.log("something went wrong");
+    }
+
+        showClass.textContent = "Class : " + classPicked;
+        showHP.textContent = "HP : " + playerHP;
+        showArmour.textContent = "Armour : " + playerArm;
+        showDodge.textContent = "Dodge : " + playerDodge;
+        showAcc.textContent = "Accuracy : " + playerAcc;
+        runGame();
+}
+
+function runEvent(evPick) {
+    showEvent.style.color = "";
+    if (evPick === 1) {
+        showEvent.textContent = "Fight a monster. Ouch, that stung";
+            monsterFight();      
+    }else if (evPick === 2) {
+        showEvent.textContent = "Safe Spot, you rest a little and regain some HP";
+        safeSpot();
+    }else if (evPick === 3) {
+        showEvent.textContent = "Ambush! You've been hurt. Badly";
+        ambushSpot();
+    }else if (evPick === 4) {
+        showEvent.textContent = "A treasure chest! Dare you open it?"
+        chestEvent();
+    }else {
+        showEvent.textContent = "Hmmm, something went wrong";
+    }
+}
+function monsterFight() {
+    playerHP = playerHP - 15;
+    showHP.textContent = "HP : " + playerHP;
+    if (playerHP < 1) {
+        showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
+        document.getElementById("restartGame").addEventListener("click", function() {
+            location.reload()
+        });
+    }
+}
+function safeSpot() {
+    playerHP = playerHP + 15;
+    showHP.textContent = "HP : " + playerHP;
+}
+function ambushSpot() {
+    playerHP =  playerHP - 40;
+    showHP.textContent = "HP : " + playerHP;
+        if (playerHP < 1) {
+            showEvent.innerHTML = `You died. Click <span id="restartGame">here</span> to restart`;
+            document.getElementById("restartGame").addEventListener("click", function() {
+                location.reload()
+            });
+        }
+}
+function chestEvent() {
+    showEvent.style.color = "green";
+}
+
+
+
 */
 
