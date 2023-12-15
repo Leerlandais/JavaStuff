@@ -16,7 +16,6 @@ var playerAcc = "";
 var playerDam = "";
 var currSpot = -1;
 
-
 /* Things to do.
 Change all arrays to objects holding class, HP etc
 Set up create char rolls for each stat based on results of dice and class chosen
@@ -37,6 +36,7 @@ for (let i = 0; i < dungSize; i++) {
 dungStart.addEventListener("click", playerPicksClass);
 
 function playerPicksClass() {
+
     showAcc.textContent = "Accuracy : ";  
     dungStart.style.visibility = "hidden";
     showClass.textContent = "Pick Your Class";
@@ -57,12 +57,15 @@ function playerPicksClass() {
 
 
 $("#dice-color").val("#000000");
-      $("#dot-color").val("#ffd700");
-      let rnd;
-      let rnd2;
-      let x, y;
-      let w, z;
-      $("#spin").click(function(e) {
+    $("#dot-color").val("#ffd700");
+    let rnd;
+    let rnd2;
+    let x, y;
+    let w, z;
+    let lastRnd = -1;
+    let lastRnd2 = -1;
+    $("#spin").click(function(e) {
+    document.getElementById("spin").style.display = "none";
         e.preventDefault();
         rnd = Math.floor(Math.random() * 6 + 1);
         switch (rnd) {
@@ -80,6 +83,11 @@ $("#dice-color").val("#000000");
             break;
         }
         console.log("1 : ", rnd, x, y);
+        if(rnd === lastRnd) {
+            console.log ("Do a Roll");
+            x += 360;
+            y += 360;
+        }
         rnd2 = Math.floor(Math.random() * 6 + 1);
         switch (rnd2) {
           case 1:
@@ -95,15 +103,26 @@ $("#dice-color").val("#000000");
             z = 900;
             break;
         }
+        if(rnd2 === lastRnd2) {
+            console.log ("Do a Roll");
+            w += 360;
+            z += 360;
+        }
         console.log("2 : ", rnd2, w, z);
+
  $(".dice").css(
  "transform",
  "translateZ(-100px) rotateY(" + x + "deg) rotateX(" + y + "deg)"
   );
+  lastRnd = rnd;
   $(".dice.dice2").css(
     "transform",
     "translateZ(-100px) rotateY(" + w + "deg) rotateX(" + z + "deg)"
      );
+    lastRnd2 = rnd2;
+setInterval(() => {
+    document.getElementById("spin").style.display = "initial";
+}, 3000);  
 });
 $("#dot-color").change(function() {
   const dot = $("#dot-color").val();
