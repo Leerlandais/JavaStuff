@@ -7,6 +7,10 @@ const playerArmour = document.getElementById("playerArmour");
 const playerSpeed = document.getElementById("playerSpeed");
 const playerLuck = document.getElementById("playerLuck");
 const dungInfo = document.getElementById("dungInfo");
+var playHP = 0;
+var playArm = 0;
+var playSpd = 0;
+var playLck = 0;
 spinDice.style.display = "none";
 
 
@@ -16,7 +20,7 @@ function makeChar() {
 
   startDung.textContent = "Continue";
   dungHeader.textContent = "Let's pick a Class";
-  playerClass.textContent = "For the moment there isn't any, so fuck off and click Continue";
+  playerClass.textContent = "For the moment there isn't any, so go ahead and click Continue";
   playerHP.textContent = "HP : ";
   playerArmour.textContent = "Armour : ";
   playerSpeed.textContent = "Speed : ";
@@ -28,7 +32,7 @@ function makeChar() {
 function rollStats () {
   startDung.style.display = "none";
   dungHeader.textContent = "Roll for HP";
-  playerClass.textContent = "";
+  playerClass.textContent = "As I said before but let's say you picked Warrior";
   playerHP.textContent = "HP : ";
   playerArmour.textContent = "Armour : ";
   playerSpeed.textContent = "Speed : ";
@@ -39,14 +43,33 @@ function rollStats () {
 }
 
 function rollHP() {
-  dungHeader.textContent ="YEAH BABY";
-  playerHP.textContent = rnd;
-  playerArmour.textContent = rnd2;
-  playerSpeed.textContent = Math.floor((rnd + rnd2)*8 +(rnd + rnd2)/3);
+  dungHeader.textContent ="Now for Armour";
+  playerClass.textContent = "Warrior";
+  playHP = Math.floor((rnd + rnd2)*8 +(rnd + rnd2)/3);
+  playerHP.textContent = "HP : " + playHP;
+  spinDice.onclick = rollArmour;
 }
 
+function rollArmour() {
+  dungHeader.textContent ="Next for Speed";
+  playArm = Math.floor((rnd + rnd2)*8 +(rnd + rnd2)/3);
+  playerArmour.textContent = "Armour : " + playArm; 
+  spinDice.onclick = rollSpeed;
+}
 
+function rollSpeed() {
+  dungHeader.textContent ="Once more for Luck";
+  playSpd = Math.floor((rnd + rnd2)*8 +(rnd + rnd2)/3);
+  playerSpeed.textContent = "Speed : " + playSpd;
+  spinDice.onclick = rollLuck;
+}
 
+function rollLuck() {
+  dungHeader.textContent ="That's all for now and not bad for an evening's work";
+  playLck = Math.floor((rnd + rnd2)*8 +(rnd + rnd2)/3);
+  playerLuck.textContent = "Luck : " + playLck;
+  //spinDice.onclick = rollLuck;
+}
 
 
 
