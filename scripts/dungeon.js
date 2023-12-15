@@ -22,6 +22,9 @@ Change all arrays to objects holding class, HP etc
 Set up create char rolls for each stat based on results of dice and class chosen
 Create some mosters and stats
 Create events for each square
+
+Player object to include: Class, HP, Armour, Speed, CritChance, HPrecovery
+Event object to include: EventType, EnemyStats (if needed), method for (open chest, rest, etc). Random roll at start or rolled each turn?
 */
 for (let i = 0; i < dungSize; i++) {        
     const placeDivs = document.createElement("div");  
