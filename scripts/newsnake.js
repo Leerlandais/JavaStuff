@@ -13,7 +13,7 @@ var snakeDir = "";                                                      // used 
 var gridFood = new Set();                                               // array to store food positions
 var snakeHead = snakePos[0];                                            // used to hold current position of snake's head
 var deadRim = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 43, 44, 65, 66, 87, 88, 109, 110, 131, 132, 153, 154, 175, 176, 197, 198, 219, 220, 241, 242, 263, 264, 285, 286, 307, 308, 329, 330, 351, 352, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395];
-                                                                        // very annoying array to type out, needed to control the outer rim
+var currDir = "";                                                                        // very annoying array to type out, needed to control the outer rim
 var snakeCollide = [];                                                  // used to check if the snake runs into itself                                
 for (let i = 0; i < bigGrid; i++) {                                     // now that all that is done, time to make the grid
     const placeDivs = document.createElement("div");                    // creates the <div> elements
@@ -31,16 +31,16 @@ deadRim.forEach(item => {                                               // colou
 startBut.addEventListener("click", makeFood(12));                           // waits for start to be pressed
 
 document.addEventListener("keydown", (e) => {                           // Listens for arrow button presses and sends relevant direction to move snake function
-    if (e.key === "ArrowUp") {
-        // console.log("up arrow pressed");
+    if (e.key === "ArrowUp" && currDir !== "sDown") {
+        // console.log("up arrow pressed", currDir);
         moveSnake("sUp");
-    } else if (e.key === "ArrowDown") {
+    } else if (e.key === "ArrowDown" && currDir !== "sUp") {
         moveSnake("sDown");
         // console.log("down arrow pressed");
-    } else if (e.key === "ArrowLeft") {
+    } else if (e.key === "ArrowLeft" && currDir !== "sRight") {
         moveSnake("sLeft");
         // console.log("left arrow pressed");
-    } else if (e.key === "ArrowRight") {
+    } else if (e.key === "ArrowRight" && currDir !== "sLeft") {
         moveSnake("sRight");
         // console.log("right arrow pressed");
     }
@@ -90,14 +90,19 @@ function makeSnake() {
 }
 
 var intervalId = null;
-var currDir = "";                                                                                          // var to control which direction will be repeated
+                                                                                         // var to control which direction will be repeated
+
 function moveSnake(dir) {
+    
+
     console.log(currDir);
     deadRim.forEach(item => {
         document.getElementById(snakeGridArray[item]).style.backgroundColor = "red";
       });
-    clearInterval(intervalId);                                                                                  // stops repetition of previous direction (if any)
-    if (dir === "sUp" && currDir != "sDown") {
+    clearInterval(intervalId);
+                                                                                      // stops repetition of previous direction (if any)
+
+    if (dir === "sUp") {
         intervalId = setInterval(() => {                                                                        // starts the interval repetition
         // console.log("let's move up");
         newSnakePos[0] = (snakePos[0]) - 22;                                                                    // moves the snakes head position to the square immediately above
@@ -110,10 +115,10 @@ function moveSnake(dir) {
                snakePos = newSnakePos;
                // console.log ("new position : ", snakePos);
                snakeHead = snakePos[0]; 
-               currDir = dir                                                                        // stored for collision detection
+               currDir = dir;                                                                        // stored for collision detection
                 makeSnake();                                                                                    // jump back to here to colour the new snake
             }, snakeSpeed);                                                                                            // and repeat 10 times per second
-            }else if (dir === "sDown" && currDir != "sUp") {
+            }else if (dir === "sDown") {
                 intervalId = setInterval(() => {
     
                 // console.log("let's move down");
@@ -127,10 +132,11 @@ function moveSnake(dir) {
         snakePos = newSnakePos;
         // console.log ("new position : ", snakePos);
         snakeHead = snakePos[0];
-        currDir = dir
+        currDir = dir;
         makeSnake();
     }, snakeSpeed);
-    }else if (dir === "sLeft" && currDir != "sRight") {
+    }else if (dir === "sLeft") {
+
         intervalId = setInterval(() => {
         // console.log("let's move left");
         newSnakePos[0] = (snakePos[0]) - 1;                                                                      // line 90 again but this time to the left
@@ -143,10 +149,10 @@ function moveSnake(dir) {
         snakePos = newSnakePos;
         // console.log ("new position : ", snakePos);
         snakeHead = snakePos[0];
-        currDir = dir
+        currDir = dir;
         makeSnake();  
     }, snakeSpeed);      
-    }else if (dir === "sRight" && currDir != "Left") {
+    }else if (dir === "sRight") {
         intervalId = setInterval(() => {
         // console.log("let's move right");
         newSnakePos[0] = (snakePos[0]) + 1;                                                                       // and, of course, to the right
@@ -159,7 +165,7 @@ function moveSnake(dir) {
         snakePos = newSnakePos;
         // console.log ("new position : ", snakePos);
         snakeHead = snakePos[0];
-        currDir = dir
+        currDir = dir;
         makeSnake();
     }, snakeSpeed);
     }
