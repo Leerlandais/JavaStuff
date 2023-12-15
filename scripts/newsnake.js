@@ -75,8 +75,14 @@ function makeSnake() {
         document.getElementById(snakePos[i]).style.backgroundColor = "blue";                                    // colours the snake
     }   document.getElementById(snakePos[0]).style.backgroundColor = "yellow";
     if (gridFood.has(snakePos[0])) { 
+        if (snakeSpeed > 75) {
         let goFaster = snakeSpeed / 50;                                                                           // checks if the snake is eating. When I made this part, I hadn't yet made a var for snakeHead
         snakeSpeed = snakeSpeed - goFaster;
+        console.log("speed up");
+        }else {
+            snakeSpeed = snakeSpeed;
+            console.log("no change");
+        }
         gridFood.delete(snakePos[0]); 
         console.log(snakeSpeed);                                                                          // removes the food once eaten 
         // console.log ("He ate!");
