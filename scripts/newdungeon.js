@@ -62,7 +62,7 @@ function makeChar() {
         dungInfo.textContent = ""; 
         spinDice.style.display = "";
         spinDice.addEventListener("click", rollHP); 
-      }
+    }
               function rollHP () {
                 spinDice.removeEventListener("click", rollHP); 
                 dungHeader.textContent ="Now for Armour";
@@ -92,43 +92,85 @@ function makeChar() {
                                 startDung.disabled = false;
                                 spinDice.disabled = true;
                                 startDung.textContent = "Step Outside";
-                                startDung.addEventListener("click", advanceStep);
+                                startDung.addEventListener("click", rollEvent);
                          }
-                            function advanceStep () {
-                                      startDung.removeEventListener("click", advanceStep);
-                                      startDung.textContent = "Continue";
-                                      dungHeader.textContent = "Fight";
-                                      enemyClass.textContent = nmeCard.nmeClass;
-                                      enemyHP.textContent = "HP : " + nmeCard.nmeHP;
-                                      enemyArmour.textContent = "Armour : " + nmeCard.nmeArm;
-                                      enemySpeed.textContent = "Speed : " + nmeCard.nmeSpd;
-                                      enemyLuck.textContent = "Luck : " + nmeCard.nmeLck;
-                                      diceRoll1 = "";
-                                      diceRoll2 = "";
-                                      startDung.disabled = false;
-                                      startDung.addEventListener("click", fightEvent);
-                            }
-                                  function fightEvent() {
-                                    startDung.addEventListener("click", fightEvent);
-                                    startDung.textContent = "That's all so far";
-                                    spinDice.textContent = "Sorry";
-                                    startDung.disabled = false;
-                                    spinDice.disabled = false;
-                                    startDung.onclick = reloadPage;
-                                    spinDice.onclick = reloadPage;
-                                  }
-                                
   }
+                        
+function rollEvent () {
+  startDung.removeEventListener("click", rollEvent);
+  spinDice.disabled = false;
+  dungHeader.textContent = "Encounter Roll";
+  let eventRoll = "";
+  eventRoll = diceRoll1 + diceRoll2;
+    console.log (eventRoll);
+    switch (eventRoll) {
+      case 2:
+      case 3:
+      case 4:
+        dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a rest area";
+        break;
+      case 5:
+      case 6:
+        dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a loot chest";
+        break;
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+        dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a fight";
+        break;
+      case 11:
+      case 12:
+        dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a nice encounter";
+        break;  
+      default:
+        dungInfo.textContent = "Uh-Oh";
+        break;
+    }
+  
+    
+    spinDice.addEventListener("click", rollEvent);
+        
+}
+  
 
-  function reloadPage() {
-    location.reload();
-  }
+
+
+
+                        
+function reloadPage() {
+  location.reload();
+}
 
 
 
 
 
-    /*
+/*
+function advanceStep () {
+  startDung.removeEventListener("click", advanceStep);
+  startDung.textContent = "Continue";
+  dungHeader.textContent = "Fight";
+  enemyClass.textContent = nmeCard.nmeClass;
+  enemyHP.textContent = "HP : " + nmeCard.nmeHP;
+  enemyArmour.textContent = "Armour : " + nmeCard.nmeArm;
+  enemySpeed.textContent = "Speed : " + nmeCard.nmeSpd;
+  enemyLuck.textContent = "Luck : " + nmeCard.nmeLck;
+  diceRoll1 = "";
+  diceRoll2 = "";
+  startDung.disabled = false;
+  startDung.addEventListener("click", rollEvent);
+}
+
+                          function fightEvent() {
+                            startDung.addEventListener("click", fightEvent);
+                            startDung.textContent = "That's all so far";
+                            spinDice.textContent = "Sorry";
+                            startDung.disabled = false;
+                            spinDice.disabled = false;
+                            startDung.onclick = reloadPage;
+                            spinDice.onclick = reloadPage;
+                          }
     if (playerCard.playHP < 1) {
       dungInfo.textContent = "You died";
       spinDice.disabled = true;
