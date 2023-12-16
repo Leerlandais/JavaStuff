@@ -8,15 +8,26 @@
     <title>Dungeon</title>
 </head>
 <body>
-  <h1 id="dungHeader">Good Luck</h1>
-  <h3 class="playerStats" id="playerClass"></h3>
-  <h3 class="playerStats" id="playerHP"></h3>
-  <h3 class="playerStats" id="playerArmour"></h3>
-  <h3 class="playerStats" id="playerSpeed"></h3>
-  <h3 class="playerStats" id="playerLuck"></h3>
-  <h2 id="dungInfo"></h2>
-  <button id="startDung">Click me to start</button>
-
+  <main>
+    <div id="playerBlock">
+        <h1 id="dungHeader">Good Luck</h1>
+        <h3 class="playerStats" id="playerClass"></h3>
+        <h3 class="playerStats" id="playerHP"></h3>
+        <h3 class="playerStats" id="playerArmour"></h3>
+        <h3 class="playerStats" id="playerSpeed"></h3>
+        <h3 class="playerStats" id="playerLuck"></h3>
+    </div>
+    <div id="enemyBlock">
+        <h3 class="enemyStats" id="enemyClass"></h3>
+        <h3 class="enemyStats" id="enemyHP"></h3>
+        <h3 class="enemyStats" id="enemyArmour"></h3>
+        <h3 class="enemyStats" id="enemySpeed"></h3>
+        <h3 class="enemyStats" id="enemyLuck"></h3>
+      </div>
+      <h2 id="dungInfo"></h2>
+    <button id="startDung">Click me to start</button>
+    <button id="spinDice">Roll Them!!!</button>
+</main>
 
 
     <div class="panel">
@@ -125,7 +136,7 @@
           </div>
         </div>
       </div>
-        <button id="spinDice">Spin random!!!</button>
+
     <script src="scripts/newdungeon.js"></script>
 </body>
 </html>
