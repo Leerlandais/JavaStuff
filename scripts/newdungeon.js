@@ -26,8 +26,8 @@ var playerCard = {
       var nmeCard = {
         nmeClass : "Wolf",
         nmeHP : 100,
-        nmeArm : 25,
-        nmeSpd : 10,
+        nmeArm : 45,
+        nmeSpd : 60,
         nmeLck : 10
       };
 
@@ -107,7 +107,61 @@ function advanceStep() {
   startDung.onclick = fightEvent;
 }
 
+function fightEvent() {
+  let damRoll = "";
+  diceRoll1 = "";
+  diceRoll2 = "";
+  spinDice.disabled = false;
+  startDung.disabled = true;
+  dungHeader.textContent = "Roll your attack";
+  spinDice.addEventListener("click", function () {
+    damRoll = (diceRoll1 + diceRoll2);
+    damRoll = damRoll + (playerCard.playSpd - nmeCard.nmeArm);
+    dungInfo.textContent = "You hit for " + damRoll + " damage";
+    nmeCard.nmeHP -= damRoll;
+    enemyHP.textContent = "HP : " + nmeCard.nmeHP;
+    if (nmeCard.nmeHP < 1) {
+      fightWin();
+    }else {
+      enemyAttack();
+    }
+  });
+}
 
+function enemyAttack () {
+  let damRoll = "";
+  diceRoll1 = "";
+  diceRoll2 = "";
+  spinDice.disabled = false;
+  startDung.disabled = true;
+  dungHeader.textContent = "Roll for enemy's attack";
+  spinDice.addEventListener("click", function () {
+    damRoll = (diceRoll1 + diceRoll2);
+    damRoll = damRoll + (nmeCard.nmeSpd - playerCard.playArm);
+    dungInfo.textContent = "You were hit for " + damRoll + " damage";
+    playerCard.playHP -= damRoll;
+    playerHP.textContent = "HP : " + playerCard.playHP;
+    if (playerCard.playHP < 1) {
+      fightLose();
+    }else {
+      fightEvent();
+    }
+  });
+  }
+
+  function fightWin () {
+    dungInfo.textContent = "Congratulations, you won";
+    spinDice.disabled = true;
+    startDung.disabled = false;
+    startDung.onclick = advanceStep;
+  }
+
+  function fightLose () {
+    dungInfo.textContent = "You have died";
+    spinDice.disabled = true;
+    startDung.disabled = false;
+    startDung.onclick = advanceStep;
+  }
 
 
     /*
