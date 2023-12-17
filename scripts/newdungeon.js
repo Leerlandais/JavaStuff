@@ -94,45 +94,45 @@ function makeChar() {
                                 startDung.textContent = "Step Outside";
                                 startDung.addEventListener("click", rollEvent);
                          }
-  }
-                        
-function rollEvent () {
+                         
+                         function rollEvent () {
   startDung.removeEventListener("click", rollEvent);
   spinDice.disabled = false;
   dungHeader.textContent = "Encounter Roll";
   let eventRoll = "";
   eventRoll = diceRoll1 + diceRoll2;
-    console.log (eventRoll);
-    switch (eventRoll) {
-      case 2:
+  console.log (eventRoll);
+  switch (eventRoll) {
+    case 2:
       case 3:
-      case 4:
-        dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a rest area";
-        break;
-      case 5:
-      case 6:
-        dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a loot chest";
-        break;
-      case 7:
-      case 8:
-      case 9:
-      case 10:
-        dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a fight";
-        break;
-      case 11:
-      case 12:
-        dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a nice encounter";
-        break;  
-      default:
-        dungInfo.textContent = "Uh-Oh";
-        break;
-    }
-  
-    
-    spinDice.addEventListener("click", rollEvent);
-        
-}
-  
+        case 4:
+          dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a rest area";
+          break;
+          case 5:
+            case 6:
+              dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a loot chest";
+              break;
+              case 7:
+                case 8:
+                  case 9:
+                    case 10:
+                      dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a fight";
+                      break;
+                      case 11:
+                        case 12:
+                          dungInfo.textContent = "You rolled : " + eventRoll + ". Let's call that a nice encounter";
+                          break;  
+                          default:
+                            dungInfo.textContent = "Uh-Oh";
+                            break;
+                          }
+                          
+                          
+                          
+                        }
+                        spinDice.addEventListener("click", rollEvent);
+                      }
+                        
 
 
 
