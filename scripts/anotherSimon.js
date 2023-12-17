@@ -165,37 +165,30 @@ function comparePings () {
     butBlu.style.backgroundColor = "";
 
 
-    if (simonPings.length === playerPings.length) {
+    let correctSeq = true;
         for (let i = 0; i < simonPings.length; i++) {
-            if (simonPings[i] === playerPings[i]) {
-                butStart.textContent = "Correct, click for next level";
-                currentScore++;
-                showScore.value = currentScore;
-                simonPicks++;
-                playerPings = [];
-                simonPings =  [];
-                console.log (simonPings, playerPings);
-                butStart.style.opacity = "1";
-                butStart.onclick = startSimon;
-            }else if (simonPings[i] !== playerPings[i]){
-                butStart.textContent = "You Lose. Click to start again";
-                simonPicks = 3;
-                currentScore = 0;
-                showScore.value = currentScore;
-                butStart.style.opacity = "1";
-                butStart.onclick = startSimon;
-            }else {
-                butStart.textContent = "Oops compPings";
-            }
+                if (simonPings[i] !== playerPings[i]){
+                    correctSeq = false;
+                    break;
+                }
         }
-    }else if (simonPings.length !== playerPings.length) {
-        butStart.textContent = "You Lose, wrong length";
+    if (correctSeq === true && simonPings.length === playerPings.length) {
+        butStart.textContent = "Correct, click for next level";
+        currentScore++;
+        showScore.value = currentScore;
+        simonPicks++;
+        playerPings = [];
+        simonPings =  [];
+        console.log (simonPings, playerPings);
+        butStart.style.opacity = "1";
+        butStart.onclick = startSimon;
+    }else {
+        butStart.textContent = "You Lose. Click to start again";
         simonPicks = 3;
         currentScore = 0;
         showScore.value = currentScore;
         butStart.style.opacity = "1";
         butStart.onclick = startSimon;
-    }else {
-        butStart.textContent = "Hmm";
     }
 }
+
