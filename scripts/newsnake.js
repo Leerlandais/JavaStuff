@@ -1,10 +1,11 @@
+const scoreSnake = document.getElementById("scoreSnake");
 const bigGrid = 396;                                                    // sets size of grid. Width controlled using CSS, set to 725px
 const bigGridFind = document.getElementById("snakeSet");                // locates the area where the grid will be placed
 const startBut = document.getElementById("snakeStart");                 // locates the start button
 const snakeGridArray = [];                                              // array to hold the grid
 var snakeLength = 5;                                                    // starting length of snake
 var snakePos = [];
-var snakeSpeed = 200;                                                      // array to hold snake's position
+var snakeSpeed = 150;                                                      // array to hold snake's position
 for (i = 0; i < snakeLength; i++) {
     snakePos[i] = i+206;                                                // place the snake at the middle of the grid
 }
@@ -26,9 +27,10 @@ for (let i = 0; i < bigGrid; i++) {                                     // now t
 deadRim.forEach(item => {                                               // colours the outer rim red
     document.getElementById(snakeGridArray[item]).style.backgroundColor = "red";
 })
+scoreSnake.value = 5;
 // console.log(snakeGridArray);
 
-startBut.addEventListener("click", makeFood(12));                           // waits for start to be pressed
+//startBut.addEventListener("click", makeFood(12));                           // waits for start to be pressed
 
 document.addEventListener("keydown", (e) => {                           // Listens for arrow button presses and sends relevant direction to move snake function
     if (e.key === "ArrowUp" && currDir !== "sDown") {
@@ -47,6 +49,7 @@ document.addEventListener("keydown", (e) => {                           // Liste
 });
 
 function makeFood(amount) {                                                   // time to place some food
+    startBut.textContent = "Snake length : " + scoreSnake.value;
  //   snakeSpeed = snakeSpeed -10;
     while (gridFood.size < amount){                                         // adjust this to change how much to place
         var foodSquare = Math.floor(Math.random() * 396)
@@ -75,7 +78,7 @@ function makeSnake() {
         document.getElementById(snakePos[i]).style.backgroundColor = "blue";                                    // colours the snake
     }   document.getElementById(snakePos[0]).style.backgroundColor = "yellow";
     if (gridFood.has(snakePos[0])) { 
-        if (snakeSpeed > 75) {
+        if (snakeSpeed > 65) {
         let goFaster = snakeSpeed / 50;                                                                           // checks if the snake is eating. When I made this part, I hadn't yet made a var for snakeHead
         snakeSpeed = snakeSpeed - goFaster;
         console.log("speed up");
@@ -87,6 +90,9 @@ function makeSnake() {
         console.log(snakeSpeed);                                                                          // removes the food once eaten 
         // console.log ("He ate!");
         snakePos.push(snakePos[snakePos.length-1] - snakeDir);                                                  // adds a new square to the end of snake's position depending on snake's current direction
+        scoreSnake.value++;
+        startBut.textContent = "Snake length : " + scoreSnake.value;
+        
         // console.log("dir : ", snakeDir, "pos : ", snakePos);
     }
     if (gridFood.size < 2){

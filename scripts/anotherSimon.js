@@ -10,7 +10,7 @@ butStart.textContent ="Press to Start";
 var simonPicks = 3;
 var simonPings = [];
 var playerPings = [];
-var currentScore = 0;
+var currentLevel = 1;
 
 butStart.onclick = startSimon;
 
@@ -67,6 +67,7 @@ async function pingColours(element, colour) {
     return new Promise((resolve) => {
         setTimeout(() => {
             element.style.backgroundColor = colour;
+            element.style.boxShadow = "inset 4px 4px 4px black";
             console.log("changing colour to " + colour);
             resolve();
         }, 500);
@@ -77,6 +78,10 @@ async function resetColours() {
     return new Promise((resolve) => {
         setTimeout(() => {
             console.log ("changing colours back")
+            butRed.style.boxShadow = "";
+            butYel.style.boxShadow = "";
+            butGre.style.boxShadow = "";
+            butBlu.style.boxShadow = "";
             butRed.style.backgroundColor = "";
             butYel.style.backgroundColor = "";
             butGre.style.backgroundColor = "";
@@ -93,6 +98,7 @@ function playerTurn () {
         butRed.addEventListener("mousedown", addRed);
         function addRed () {
         butRed.style.backgroundColor = "red";
+        butRed.style.boxShadow = "inset 4px 4px 4px black";
         playerPings.push(1);
         console.log(playerPings);
   //          simHint.textContent = playerPings;
@@ -101,10 +107,12 @@ function playerTurn () {
 }
         function remRed () {
                 butRed.style.backgroundColor = "";
+                butRed.style.boxShadow = "";
             }
             butYel.addEventListener("mousedown", addYel);
             function addYel () {
             butYel.style.backgroundColor = "yellow";
+            butYel.style.boxShadow = "inset 4px 4px 4px black";            
             playerPings.push(2);
             console.log(playerPings);
      //       simHint.textContent = playerPings;
@@ -113,11 +121,13 @@ function playerTurn () {
             }
         function remYel () {
             butYel.style.backgroundColor = "";
+            butYel.style.boxShadow = "";
         }
     
             butGre.addEventListener("mousedown", addGre);
             function addGre () {
             butGre.style.backgroundColor = "green";
+            butGre.style.boxShadow = "inset 4px 4px 4px black";            
             playerPings.push(3);
             console.log(playerPings);
      //       simHint.textContent = playerPings;
@@ -126,11 +136,13 @@ function playerTurn () {
     }
         function remGre () {
             butGre.style.backgroundColor = "";
+            butGre.style.boxShadow = "";
         }
 
             butBlu.addEventListener("mousedown", addBlu);
             function addBlu () {
             butBlu.style.backgroundColor = "blue";
+            butBlu.style.boxShadow = "inset 4px 4px 4px black";            
             playerPings.push(4);
             console.log(playerPings);
      //       simHint.textContent = playerPings;
@@ -139,6 +151,7 @@ function playerTurn () {
             }
             function remBlu () {
             butBlu.style.backgroundColor = "";
+            butBlu.style.boxShadow = "";
             }
 
             butStart.onclick = clearListeners;
@@ -174,8 +187,8 @@ function comparePings () {
         }
     if (correctSeq === true && simonPings.length === playerPings.length) {
         butStart.textContent = "Correct, click for next level";
-        currentScore++;
-        showScore.value = currentScore;
+        currentLevel++;
+        showScore.value = currentLevel;
         simonPicks++;
         playerPings = [];
         simonPings =  [];
@@ -185,8 +198,8 @@ function comparePings () {
     }else {
         butStart.textContent = "You Lose. Click to start again";
         simonPicks = 3;
-        currentScore = 0;
-        showScore.value = currentScore;
+        currentLevel = 1;
+        showScore.value = currentLevel;
         butStart.style.opacity = "1";
         butStart.onclick = startSimon;
     }
