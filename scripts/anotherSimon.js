@@ -60,8 +60,6 @@ async function pingPicker () {
     playerTurn();
 }
 
-//pingPicker();
-
 
 async function pingColours(element, colour) {
     return new Promise((resolve) => {
@@ -75,17 +73,13 @@ async function pingColours(element, colour) {
 }
 
 async function resetColours() {
+    const allButs = [butRed, butYel, butGre, butBlu];
     return new Promise((resolve) => {
         setTimeout(() => {
-            console.log ("changing colours back")
-            butRed.style.boxShadow = "";
-            butYel.style.boxShadow = "";
-            butGre.style.boxShadow = "";
-            butBlu.style.boxShadow = "";
-            butRed.style.backgroundColor = "";
-            butYel.style.backgroundColor = "";
-            butGre.style.backgroundColor = "";
-            butBlu.style.backgroundColor = "";
+            allButs.forEach((button) => {
+                button.style.backgroundColor = "";
+                button.style.boxShadow = "";
+            });
             resolve();
         }, 500);
     });
