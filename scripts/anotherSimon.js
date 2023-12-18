@@ -36,25 +36,30 @@ async function pingPicker () {
   //  simHint.textContent = simonPings;
     console.log(simonPings);
     for (let i = 0; i < simonPings.length; i++) {
-        if (simonPings[i] === 1) {
-            await pingColours(butRed, "red");
-            await resetColours();
-            
-        }else if (simonPings[i] === 2) {
-            await pingColours(butYel, "yellow");
-            await resetColours();
-            
-        }else if (simonPings[i] === 3) {
-            await pingColours(butGre, "green");
-            await resetColours();
-            
-        }else if (simonPings[i] === 4) {
-            await pingColours(butBlu, "blue");
-            await resetColours();
-            
-        }
-        else {
-            simHint.textContent = "something went wrong : func pingPick";
+        try{
+
+            if (simonPings[i] === 1) {
+                await pingColours(butRed, "red");
+                await resetColours();
+                
+            }else if (simonPings[i] === 2) {
+                await pingColours(butYel, "yellow");
+                await resetColours();
+                
+            }else if (simonPings[i] === 3) {
+                await pingColours(butGre, "green");
+                await resetColours();
+                
+            }else if (simonPings[i] === 4) {
+                await pingColours(butBlu, "blue");
+                await resetColours();
+                
+            }
+            else {
+                simHint.textContent = "something went wrong : func pingPick";
+            }
+        }catch(e){
+            console.error(e);
         }
     }
     playerTurn();
