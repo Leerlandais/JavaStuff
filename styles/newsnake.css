@@ -27,8 +27,7 @@ h1 {
 
 #snakeSet {
     margin: 0 auto;
-   width: 705px;  
- /*   width: 28%;  /* width for home  */
+    width: 705px;  
     border: 2px solid;
 }
 
@@ -58,4 +57,9 @@ input {
     display: none;
     margin: 0 auto;
     width: max-content;
+}
+
+#home{
+    display: block;
+    font-size: 24px;
 }

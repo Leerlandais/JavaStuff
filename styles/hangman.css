@@ -69,3 +69,8 @@ h1{
 #hangReload{
     color: aqua;
 }
+
+#home{
+    display: block;
+    font-size: 24px;
+}

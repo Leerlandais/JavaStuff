@@ -37,3 +37,7 @@ input {
     text-align: center;
     
 }
+#home{
+    display: block;
+    font-size: 24px;
+}

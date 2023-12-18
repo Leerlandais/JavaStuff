@@ -108,17 +108,14 @@ td, tr{
    text-decoration: underline overline;
  }
 
-
-/*
-#StepDiv{
-    display: inline-flex;
-    margin: 100px 0px 100px 200px ;
-} */
-
-
 #StepDisp{
     width: 500px;
     margin-left: 50px;
 
+}
+
+#home {
+    display: block;
+    font-size: 24px;
 }
 

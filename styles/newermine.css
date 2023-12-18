@@ -1,4 +1,5 @@
 footer {
+    clear: left;
     position: sticky;
     text-align: center;
     font-style: italic;
@@ -61,4 +62,10 @@ h2 {
 
 #MineReload{
     color: aqua;
+}
+
+#home{
+    clear: left;
+    display: block;
+    font-size: 24px;
 }
