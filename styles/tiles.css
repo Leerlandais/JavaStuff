@@ -47,7 +47,7 @@ h1 {
     display: table-cell;
     width: 120px;
     height: 120px;
-    border: 1px solid white;
+    border: 1px solid #f4d292;
     background: url(../images/480louise.jpg);
     cursor: pointer;
   }
@@ -67,5 +67,13 @@ h1 {
 .tile13 {background-position: 0px 120px;}
 .tile14 {background-position: 360px 120px;}
 .tile15 {background-position: 240px 120px;}
-.tile16 {background: white; cursor: default;}
+.tile16 {background: #f4d292;  border: 2px solid; cursor: default;}
+
+#hintImg {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+    background: url(../images/480louise.jpg);
+    background-size: contain;
+}
     

@@ -17,7 +17,7 @@ footer {
 
 fieldset {
     max-width: fit-content;
-    margin: 100px auto;
+    margin: 100px auto 0px;
     border: 2px solid black;
 }
 
@@ -47,7 +47,7 @@ h1 {
     display: table-cell;
     width: 200px;
     height: 200px;
-    border: 1px solid white;
+    border: 1px solid #f4d292;
     background: url(../images/600oscar.jpg);
     cursor: pointer;
   }
@@ -60,5 +60,12 @@ h1 {
 .tile6 {background-position: center right;}
 .tile7 {background-position: bottom left;}
 .tile8 {background-position: bottom center;}
-.tile9 {background: white; cursor: default;}
+.tile9 {background: #f4d292;  border: 2px solid; cursor: default;}
     
+#hintImg {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+    background: url(../images/600oscar.jpg);
+    background-size: contain;
+}
