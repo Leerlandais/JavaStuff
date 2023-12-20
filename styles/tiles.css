@@ -1,153 +1,71 @@
-body {
-    background-color: #f4d292;
+footer {
+    position: sticky;
+    text-align: center;
+    font-style: italic;
     font-family: cursive;
-} 
+    bottom: 0;
+}
+
+#copyright{                 
+    transition: transform 50s ease-in-out;
+}
+
+#copyright:hover {
+    transform: rotateY(-36000deg);
+   
+}
+
+fieldset {
+    max-width: fit-content;
+    margin: 100px auto;
+    border: 2px solid black;
+}
+
+body { 
+    background: #f4d292;
+    }
 
 h1 {
     text-align: center;
-    font-style: italic;
+    font-size: 3em;
+    font-family: cursive;
     text-decoration: underline;
 }
 
-#tileSet {
-    background-color: darkgrey;
-    width: 60vw;
-    height: 40vw;
-    margin: 0 auto;
-    border: 2px solid black;
-    border-radius: 10%;
-}
-
-legend {
-    margin-left: 100px;
-    
-    font-size: 24px;
-    padding: 0 5px;
-}
-
 #tileTable {
-    display: table;
-    width: 490px;
-    height: 490px;
-    margin: 10% auto;
+    margin: 0 auto;
 }
 
-.tileRow {
-    display: table-row;
-    width: 490px;
+#startTile{
+    display: block;
+    width: 250px;
+    height: 50px;
+    margin: 0 auto;
 }
-
-.tile {
+    
+.tile1, .tile2, .tile3, .tile4, .tile5, .tile6, .tile7, .tile8, .tile9, .tile10, .tile11, .tile12, .tile13, .tile14, .tile15, .tile16 {
+    display: table-cell;
     width: 120px;
     height: 120px;
-    border: 1px solid wheat; 
+    border: 1px solid white;
+    background: url(../images/480louise.jpg);
     cursor: pointer;
-}
-
-#tile1_1 {
-    display: table-cell;
-}
-
-.part1 {
-    background: url(../images/me.jpg);
-    background-position: 0% 0%;
-}
-
-#tile1_2 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 360px 0px;
-}
-
-#tile1_3 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 240px 0px;
-}
-
-#tile1_4 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background: #f4d292;
-    cursor: default;
-}
-
-#tile2_1 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 0px 360px;
-}
-
-#tile2_2 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 360px 360px;
-}
-
-#tile2_3 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 240px 360px;
-}
-
-
-#tile2_4 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 120px 360px;
-}
-
-#tile3_1 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 480px 240px;
-}
-
-#tile3_2 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 360px 240px;
-}
-
-#tile3_3 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 240px 240px;
-}
-
-
-#tile3_4 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 120px 240px;
-}
-
-#tile4_1 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 480px 120px;
-}
-
-#tile4_2 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 360px 120px;
-}
-
-#tile4_3 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 240px 120px;
-}
-
-
-#tile4_4 {
-    display: table-cell;
-    background: url(../images/me.jpg);
-    background-position: 120px 120px;
-}
-
-#otherImg {
-    margin: 0 auto;
-    display: block;
-}
+  }
+  
+.tile1 {background-position: 0px 0px;}
+.tile2 {background-position: 360px 0px;}
+.tile3 {background-position: 240px 0px;}
+.tile4 {background-position: 120px 0px;}
+.tile5 {background-position: 0px 360px;}
+.tile6 {background-position: 360px 360px;}
+.tile7 {background-position: 240px 360px;}
+.tile8 {background-position: 120px 360px;}
+.tile9 {background-position: 0px 240px;}
+.tile10 {background-position: 360px 240px;}
+.tile11 {background-position: 240px 240px;}
+.tile12 {background-position: 120px 240px;}
+.tile13 {background-position: 0px 120px;}
+.tile14 {background-position: 360px 120px;}
+.tile15 {background-position: 240px 120px;}
+.tile16 {background: white; cursor: default;}
+    

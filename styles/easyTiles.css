@@ -1,0 +1,64 @@
+footer {
+    position: sticky;
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+    bottom: 0;
+}
+
+#copyright{                 
+    transition: transform 50s ease-in-out;
+}
+
+#copyright:hover {
+    transform: rotateY(-36000deg);
+   
+}
+
+fieldset {
+    max-width: fit-content;
+    margin: 100px auto;
+    border: 2px solid black;
+}
+
+body { 
+    background: #f4d292;
+    }
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    font-family: cursive;
+    text-decoration: underline;
+}
+
+#tileTable {
+    margin: 0 auto;
+}
+
+#startTile{
+    display: block;
+    width: 250px;
+    height: 50px;
+    margin: 0 auto;
+}
+    
+.tile1, .tile2, .tile3, .tile4, .tile5, .tile6, .tile7, .tile8, .tile9 {
+    display: table-cell;
+    width: 200px;
+    height: 200px;
+    border: 1px solid white;
+    background: url(../images/600oscar.jpg);
+    cursor: pointer;
+  }
+  
+.tile1 {background-position: top left;}
+.tile2 {background-position: top center;}
+.tile3 {background-position: top right;}
+.tile4 {background-position: center left;}
+.tile5 {background-position: center center;}
+.tile6 {background-position: center right;}
+.tile7 {background-position: bottom left;}
+.tile8 {background-position: bottom center;}
+.tile9 {background: white; cursor: default;}
+    
