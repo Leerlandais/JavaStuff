@@ -10,7 +10,7 @@ h1 {
 }
 
 #tileSet {
-    background-color: lightgrey;
+    background-color: darkgrey;
     width: 60vw;
     height: 40vw;
     margin: 0 auto;
@@ -27,75 +27,127 @@ legend {
 
 #tileTable {
     display: table;
-    width: 612px;
-    height: 612px;
+    width: 490px;
+    height: 490px;
     margin: 10% auto;
 }
 
 .tileRow {
     display: table-row;
-    width: 612px;
+    width: 490px;
 }
 
 .tile {
-    width: 200px;
-    height: 200px;
-    border: 1px solid wheat;
+    width: 120px;
+    height: 120px;
+    border: 1px solid wheat; 
     cursor: pointer;
 }
 
 #tile1_1 {
     display: table-cell;
+}
+
+.part1 {
     background: url(../images/me.jpg);
-    background-position: top left;
+    background-position: 0% 0%;
 }
 
 #tile1_2 {
     display: table-cell;
     background: url(../images/me.jpg);
-    background-position: top center;
+    background-position: 360px 0px;
 }
 
 #tile1_3 {
     display: table-cell;
     background: url(../images/me.jpg);
-    background: white;
+    background-position: 240px 0px;
+}
+
+#tile1_4 {
+    display: table-cell;
+    background: url(../images/me.jpg);
+    background: #f4d292;
     cursor: default;
 }
 
 #tile2_1 {
     display: table-cell;
     background: url(../images/me.jpg);
-    background-position: center left;
+    background-position: 0px 360px;
 }
 
 #tile2_2 {
     display: table-cell;
     background: url(../images/me.jpg);
-    background-position: center center;
+    background-position: 360px 360px;
 }
 
 #tile2_3 {
     display: table-cell;
     background: url(../images/me.jpg);
-    background-position: center right;
+    background-position: 240px 360px;
+}
+
+
+#tile2_4 {
+    display: table-cell;
+    background: url(../images/me.jpg);
+    background-position: 120px 360px;
 }
 
 #tile3_1 {
     display: table-cell;
     background: url(../images/me.jpg);
-    background-position: bottom left;
+    background-position: 480px 240px;
 }
 
 #tile3_2 {
     display: table-cell;
     background: url(../images/me.jpg);
-    background-position: bottom center;
+    background-position: 360px 240px;
 }
 
 #tile3_3 {
     display: table-cell;
     background: url(../images/me.jpg);
-    background-position: bottom right;
+    background-position: 240px 240px;
 }
 
+
+#tile3_4 {
+    display: table-cell;
+    background: url(../images/me.jpg);
+    background-position: 120px 240px;
+}
+
+#tile4_1 {
+    display: table-cell;
+    background: url(../images/me.jpg);
+    background-position: 480px 120px;
+}
+
+#tile4_2 {
+    display: table-cell;
+    background: url(../images/me.jpg);
+    background-position: 360px 120px;
+}
+
+#tile4_3 {
+    display: table-cell;
+    background: url(../images/me.jpg);
+    background-position: 240px 120px;
+}
+
+
+#tile4_4 {
+    display: table-cell;
+    background: url(../images/me.jpg);
+    background-position: 120px 120px;
+}
+
+#otherImg {
+    margin: 0 auto;
+    display: block;
+}
