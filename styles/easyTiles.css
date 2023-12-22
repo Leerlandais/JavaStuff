@@ -63,6 +63,10 @@ h1 {
 .tile9 {background: #f4d292;  border: 2px solid; cursor: default;}
     
 #hintImg {
+    display: inline-block;
+    position: fixed;
+    right: 20%;
+    top: 25%;
     width: 240px;
     height: 240px;
     margin: 0 auto;

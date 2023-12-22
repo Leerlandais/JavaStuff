@@ -1,6 +1,7 @@
 const startTile = document.getElementById("startTile");
+const tileHeader = document.getElementById("tileHeader");
+const winOrder = ["tile11", "tile12", "tile13", "tile21", "tile22", "tile23", "tile31", "tile32", "tile33"];
 startTile.onclick = shuffleTiles;
-
 function shuffleTiles() {
     startTile.disabled = true;
     for (var row = 1; row <= 3; row++) { 
@@ -19,26 +20,26 @@ function tileSelect(row, column) {
     if (tile!="tile9") { 
         if (column < 3) {
             if ( document.getElementById("tile" + row + (column + 1)).className=="tile9") {
-                switchTilePos("tile"+row+column,"tile" + row + (column + 1));
+                switchTilePos("tile" + row + column, "tile" + row + (column + 1));
                 return;
             }
         }
         if (column > 1) {
             if ( document.getElementById("tile" + row + (column - 1)).className=="tile9") {
-                switchTilePos("tile"+row+column,"tile" + row + (column - 1));
+                switchTilePos("tile" + row + column, "tile" + row + (column - 1));
                 return;
             }
         }
         
         if (row > 1) {
             if ( document.getElementById("tile" + (row - 1) + column).className=="tile9") {
-                switchTilePos("tile"+row+column,"tile" + (row - 1) + column);
+                switchTilePos("tile" + row + column, "tile" + (row - 1) + column);
                 return;
             }
         }
         if (row < 3) {
             if ( document.getElementById("tile" + (row + 1) + column).className=="tile9") {
-                switchTilePos("tile"+row+column,"tile" + (row + 1) + column);
+                switchTilePos("tile" + row + column, "tile" + (row + 1) + column);
                 return;
             }
         } 
@@ -51,3 +52,16 @@ function switchTilePos(firstTile, secTile) {
     document.getElementById(secTile).className = holdTile;
 }
 
+
+
+/*
+let currentOrder = [];
+for (let i = 0; i < winOrder.length; i++) {
+    if (document.getElementById(winOrder[i]).className === "tile" + i);
+    currentOrder.push(winOrder[i]);
+}   if (winOrder.length === currentOrder.length) {
+        console.log(winOrder.length, currentOrder.length);
+        console.log(winOrder, currentOrder);
+        tileHeader.textContent = "That's right. Congratulations";
+}
+*/
