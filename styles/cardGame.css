@@ -35,10 +35,15 @@ h1 {
 
 .cardFront {
   background-color: lightgrey;
-  background-image: url(../images/BWWonder.svg);
+  background-image: url("../images/BWWonder.svg");
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.cardFront:hover {
+  background-image: url("../images/BWHappy.svg");
+}
+
 
 .cardBack {
   background-color: darkgrey;
@@ -51,67 +56,35 @@ h1 {
   transform: translateX(-100%) rotateY(-180deg);
 }
 
-#card1B {
+#card2, #card4 {
   background-image: url("../images/GlassesSmirk.svg");
 }
 
-#card2B {
-  background-image: url("../images/GlassesSmirk.svg");
-}
-
-#card3B {
+#card6, #card8 {
   background-image: url("../images/MoustacheGlasses.svg");
 }
 
-#card4B {
-  background-image: url("../images/MoustacheGlasses.svg");
-}
-
-#card5B {
+#card10, #card12 {
   background-image: url("../images/TongueSquint.svg");
 }
 
-#card6B {
-  background-image: url("../images/TongueSquint.svg");
-}
-
-#card7B {
+#card14, #card16 {
   background-image: url("../images/TongueSmile.svg");
 }
 
-#card8B {
-  background-image: url("../images/TongueSmile.svg");
-}
-
-#card9B {
+#card18, #card20 {
   background-image: url("../images/StarsEyes.svg");
 }
 
-#card10B {
-  background-image: url("../images/StarsEyes.svg");
-}
-
-#card11B {
+#card22, #card24 {
   background-image: url("../images/PurpleDevil.svg");
 }
 
-#card12B {
-  background-image: url("../images/PurpleDevil.svg");
-}
-
-#card13B {
+#card26, #card28 {
   background-image: url("../images/MoneySmile.svg");
 }
 
-#card14B {
-  background-image: url("../images/MoneySmile.svg");
-}
-
-#card15B {
-  background-image: url("../images/WinkSmile.svg");
-}
-
-#card16B {
+#card30, #card32 {
   background-image: url("../images/WinkSmile.svg");
 }
 
