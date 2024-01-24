@@ -1,13 +1,3 @@
-
-
-var card = document.querySelectorAll('.cardSpot');
-card.forEach(function(cardSpot) {
-cardSpot.addEventListener( 'click', function() {
-  cardSpot.classList.toggle('flippedCard');
-});
-});
-
-
 const cardBackgrounds = [
   "images/MoustacheGlasses.svg",
   "images/MoustacheGlasses.svg",
@@ -25,26 +15,30 @@ const cardBackgrounds = [
   "images/MoneySmile.svg",
   "images/WinkSmile.svg",
   "images/WinkSmile.svg"
-
 ];
+
 cardBackgrounds.push(...cardBackgrounds);
 
-
-
 document.getElementById("cardStart").addEventListener("click", function () {
-  const cards = document.querySelectorAll('.cardBack');
-
+  const cards = document.querySelectorAll(".cardBack");
   for (let i = cards.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     const tempBackground = cardBackgrounds[i];
     cardBackgrounds[i] = cardBackgrounds[j];
     cardBackgrounds[j] = tempBackground;
-
     cards[i].style.backgroundImage = `url(${cardBackgrounds[i]})`;
     cards[j].style.backgroundImage = `url(${cardBackgrounds[j]})`;
+          // maybe make an array that has values assigned by the new positions?
   }
 });
 
+var card = document.querySelectorAll(".cardSpot");
+card.forEach(function(cardSpot) {
+  cardSpot.addEventListener( "click", function() {
+    cardSpot.classList.toggle("flippedCard");
+    console.log(cardSpot.children[1].classList);          // need to find a way of identifying the background image to do a comparison check
+  });
+});
 
 
 
