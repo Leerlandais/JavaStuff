@@ -63,8 +63,28 @@ switch(cookieNum){
 
 function findMax(num1, num2, num3){
     var biggestNum = Math.max(num1, num2, num3);
-    return biggestNum;
+    return biggestNum; 
 }
+
+
+function drawRectangle(recHeight, recWidth, recSymbol = "*"){ 
+         console.log (recHeight, recWidth, recSymbol);
+            for (var i = 0; i < recWidth; i++){
+                console.log(recSymbol);
+            }
+            for (var j = 0; j < recHeight; j++){
+                if(j === 0 || j === recWidth){
+                    console.log(' - ', recSymbol, ' - ');
+                }else {
+                    continue;
+                }    
+            }
+            for (var k = 0; k < recWidth; k++){
+                console.log(recSymbol);
+            }
+
+}
+
 /*
 false
 true
@@ -73,5 +93,20 @@ false?
 true
 aucune idée
 true
+
+Créez une fonction drawRectangle qui prendra au maximum 3 arguments et qui dessinera dans votre console, à base de caractères de votre clavier, un rectangle dont l'intérieur est vide. Lors de l'appel deux des paramètres sont obligatoires: la longueur et la hauteur. Le dernier paramètre est le caractère qui sera utilisé pour dessiner le rectangle et sa valeur de base est '*'
+
+    for (let i = 0; i < recLength; i++){
+        for (let j = 0; j < recWidth; j++){
+    }
+}
+
+
+                if((i > 0 || i < recLength) && j === 0 || j === recWidth){
+                    console.log(recSymbol);
+                }
+                if(i === recLength){
+                    console.log(recSymbol);
+                }
 */
  
