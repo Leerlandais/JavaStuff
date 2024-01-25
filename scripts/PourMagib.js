@@ -73,10 +73,8 @@ function drawRectangle(recHeight, recWidth, recSymbol = "*"){
                 console.log(recSymbol);
             }
             for (var j = 0; j < recHeight; j++){
-                if(j === 0 || j === recWidth){
+                if(j === 0 || j === recWidth && j > 0 && j < recHeight){
                     console.log(' - ', recSymbol, ' - ');
-                }else {
-                    continue;
                 }    
             }
             for (var k = 0; k < recWidth; k++){
