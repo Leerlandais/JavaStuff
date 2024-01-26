@@ -1,6 +1,6 @@
 
 var age = prompt("Votre age?");
-function ageTest(age) {
+
 if(age < 13){
     console.log("Je vous recommande de regarder des dessins animés.");
 }else if(age >= 13 && age < 18){
@@ -8,9 +8,9 @@ if(age < 13){
 }else if (age > 18){
     console.log("Oseriez-vous regarder un film d'horreur?"); 
 }else {
-    console.log("Il y avait un problème. Essayez encore.")
+    console.log("Il y avait un problème. Essayez encore.");
 }
-}
+
 
 
 
@@ -18,16 +18,16 @@ if(age < 13){
 var age = prompt("Votre age?")
 drivePerm(age);
 function drivePerm(age) {
-if(age < 16){
-    console.log("Désolé, vous êtes trop jeune pour conduire.");
-}else if(age >= 16){
-    console.log("Vous pourrez conduire aux Etats-Unis");
-}else if (age >= 18){
-    console.log("Vous pourrez conduire au France ainsi que aux Etats-Unis");
-}else if (age >= 20){
-    console.log("Vous pourrez conduire au Sénégal et la France et aux Etats-Unis");
-}else {
-    console.log("Il y avait un problème. Essayez encore.")
+if (age >= 20){
+        console.log("Vous pourrez conduire au Sénégal et la France et aux Etats-Unis");
+    }else if (age >= 18){
+        console.log("Vous pourrez conduire au France ainsi que aux Etats-Unis");
+    }else if(age >= 16){
+        console.log("Vous pourrez conduire aux Etats-Unis");
+    }else if(age < 16){
+        console.log("Désolé, vous êtes trop jeune pour conduire.");
+    }else {
+        console.log("Il y avait un problème. Essayez encore.")
 }
 }
 
@@ -69,10 +69,30 @@ function findMax(num1, num2, num3){
 
 function drawRectangle(recHeight, recWidth, recSymbol = "*"){ 
          console.log (recHeight, recWidth, recSymbol);
+         var gridArray = [];
+         var vertArray = [];
             for (var i = 0; i < recWidth; i++){
-                console.log(recSymbol);
+                gridArray.push(recSymbol);
+                if (i != 0 || i != gridArray.length-1){
+                    vertArray.push("");
+                }else{
+                    vertArray.push(recSymbol);
+                }
             }
-            for (var j = 0; j < recHeight; j++){
+            console.log(gridArray.length);
+            var showArray = gridArray.join("");
+            var showVert = vertArray.join(" ");
+            console.log(showArray);
+            for (j=0; j < recHeight;j++){
+                console.log(showVert);
+            }
+     console.log(showArray);
+
+}
+
+/*
+
+       for (var j = 0; j < recHeight; j++){
                 if(j === 0 || j === recWidth && j > 0 && j < recHeight){
                     console.log(' - ', recSymbol, ' - ');
                 }    
@@ -80,10 +100,6 @@ function drawRectangle(recHeight, recWidth, recSymbol = "*"){
             for (var k = 0; k < recWidth; k++){
                 console.log(recSymbol);
             }
-
-}
-
-/*
 false
 true
 false?
